@@ -1,0 +1,87 @@
+==========================================================================
+  APPENDIX O -- EVERYTHING ARISES AT THE ASSERTION
+  each question answered twice: read from the boundary's symbols,
+  and carved from the cells the boundary bounds
+==========================================================================
+
+O.1  THE HARMONIC POINTS OF A RELATION
+     read: the asserted sector and its component-wise opposite.
+     carved: every cell of the relation's interior, each given a
+     solved state, keeping those whose residual vanishes.
+
+    PASS  Instance 1: the read harmonic points are the carved ones, on every relation   43/43
+    PASS  Instance 1: reading touched 129 symbols and formed 0 cells; carving formed 344 cells and 344 solved states   [the same answer, at 129 symbols against 344 cells]
+    PASS  Instance 2: the read harmonic points are the carved ones, on every relation   51/51
+    PASS  Instance 2: reading touched 153 symbols and formed 0 cells; carving formed 408 cells and 408 solved states   [the same answer, at 153 symbols against 408 cells]
+
+O.2  THE EXCLUDED SECTOR
+     the sector is one of the two harmonic points, and it is the
+     one the assertion wrote down.
+
+    PASS  Instance 1: the excluded sector is a harmonic point of its own relation   43/43
+    PASS  Instance 2: the excluded sector is a harmonic point of its own relation   51/51
+
+O.3  WHAT THE ASSERTION FIXES, AGAINST WHAT THE ENVELOPE HOLDS
+
+          instance   symbols  relations  harmonic pts  cells bounded     envelope
+        Instance 1       140         43            86            344        1,024
+        Instance 2       166         51           102            408        4,096
+
+    PASS  Instance 1: 86 harmonic points stand fixed by 140 symbols   [two per relation, each written in the k symbols already asserted]
+    PASS  Instance 1: the symbols do not grow with the envelope   [140 symbols against 1,024 addresses]
+    PASS  Instance 2: 102 harmonic points stand fixed by 166 symbols   [two per relation, each written in the k symbols already asserted]
+    PASS  Instance 2: the symbols do not grow with the envelope   [166 symbols against 4,096 addresses]
+
+O.4  THE READING FORMS NO ADDRESS
+
+    PASS  Instance 1: every harmonic point and every excluded sector read, 0 addresses formed   [258 symbols read; the envelope of 1,024 addresses was not entered]
+    PASS  Instance 2: every harmonic point and every excluded sector read, 0 addresses formed   [306 symbols read; the envelope of 4,096 addresses was not entered]
+
+O.5  THE CARVING GROWS WITH THE BLOCK; THE READING DOES NOT
+     the same relation asserted inside envelopes of growing size
+
+       envelope n      addresses  read: symbols  carved: cells
+               10          1,024              3              8
+               14         16,384              3              8
+               18        262,144              3              8
+               22      4,194,304              3              8
+               26     67,108,864              3              8
+               30  1,073,741,824              3              8
+
+    PASS  the reading cost is the same at every envelope size   [3 symbols throughout, while the envelope grows from 1,024 to 1,073,741,824 addresses]
+    PASS  the carving cost is the same too, because the relation bounds its own interior and not the envelope   [8 cells throughout: a relation of width k bounds 2^k cells whatever n is (Theorem 6.2)]
+    PASS  neither cost contains the envelope   [the figure was in the marble; the block's size is not the carving]
+
+O.6  THE TRIANGLE CENSUS, IN CLOSED FORM
+     Theorem 28.3 [1]: a closed descent of depth N contains exactly
+     4N + 1 triangles -- two at the term pair, four at each lateral
+     of levels 0..N-2, three at the terminal lateral.  Theorem 29.4:
+     the independent count is 3N + 1 and triangles generate every
+     circuit.  Both are read from the depth, not counted.
+
+         N  term pair   interior  terminal    total    4N+1  rank 3N+1
+         4          2         12         3       17      17         13
+         6          2         20         3       25      25         19
+         8          2         28         3       33      33         25
+        10          2         36         3       41      41         31
+        12          2         44         3       49      49         37
+        14          2         52         3       57      57         43
+
+    PASS  the distribution sums to 4N + 1 at every depth   [2 + 4 + 4(N-2) + 3 = 4N + 1]
+    PASS  the terminal lateral carries three where every interior lateral carries four   [the missing fourth is the conjugate asserted but never presented (Theorem 22.3 [1]); Theorem 28.4 calls it closure's second signature, the same deficit the valence profile shows]
+    PASS  the census is linear in the depth, so it is read and not counted   [evaluated at depth one million without forming a descent]
+    PASS  Instance 1: every clause closes a triangle, 36 distinct among 43 relations   [a relation of width three closes a bearing on three contents]
+    PASS  Instance 1: the envelope's census is 41 = 4n + 1, fixed by the assertion   [against an envelope of 1,024 addresses]
+    PASS  Instance 2: every clause closes a triangle, 47 distinct among 51 relations   [a relation of width three closes a bearing on three contents]
+    PASS  Instance 2: the envelope's census is 49 = 4n + 1, fixed by the assertion   [against an envelope of 4,096 addresses]
+
+O.7  THE PROTOCOL CAN FAIL
+
+    PASS  the two harmonic points of a relation are distinct   [the asserted sector and its component-wise opposite]
+    PASS  they are conjugate: the same support, opposite orientations   [Theorem 8.4: the two termini are a conjugate pair]
+    PASS  a reading that returned the sector twice would be caught   [the comparison in O.1 is against the carved set, not against itself]
+    PASS  the carving actually forms the cells it is charged for   [8 cells, 8 solved states]
+
+==========================================================================
+  APPENDIX O   26 of 26 checks pass
+==========================================================================

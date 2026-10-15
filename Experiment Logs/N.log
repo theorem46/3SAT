@@ -1,0 +1,72 @@
+==========================================================================
+  APPENDIX N -- THE TERMINUS DISTINGUISHES
+  both termini of a relation have D only; the sign of Sigma says
+  which one the operator reached, and that is what decides
+==========================================================================
+
+N.1  THE SOLVED STATE OF EACH RELATION
+     formed per relation and never aggregated.  Over all 2^k
+     orientations of a width-3 relation, exhaustively.
+
+         orientation   Sigma   mu(D)   mu(S)   terminus
+           [1, 1, 1]       3       0       0        yes
+          [1, 1, -1]       1       4       4           
+          [1, -1, 1]       1       4       4           
+         [1, -1, -1]      -1       4       4           
+          [-1, 1, 1]       1       4       4           
+         [-1, 1, -1]      -1       4       4           
+         [-1, -1, 1]      -1       4       4           
+        [-1, -1, -1]      -3       0       0        yes
+
+    PASS  the shadow vanishes at exactly two orientations   [[3, -3]]
+    PASS  those two are the uniform states, at Sigma = +k and Sigma = -k
+    PASS  the residual component vanishes at both termini, so each is a fixed harmonic point of the operator   [Proposition 10.4 [2]: a solved state is terminal if and only if S = 0]
+    PASS  every mixed orientation carries shadow   [6 mixed states, all with mu(S) > 0]
+    PASS  the aligned component is non-zero at every mixed orientation, so D carries the differences among the relation's contents   [mu(D) = 4 at each of the 6 mixed states]
+    PASS  at a terminus both components vanish over the relation's own support, since its contents all agree and there is nothing to differ   [D measures difference, so a uniform orientation carries none; what remains of the state is Sigma]
+    PASS  Sigma is therefore the invariant of the harmonic point, and the two termini are told apart by it alone   [Sigma = +k where every content stands as the relation asserts it; Sigma = -k where every content stands opposite]
+
+N.2  THE TERMINUS AT SIGMA = -k IS THE EXCLUDED SECTOR
+     checked against the boundary's own asserted sector, so the
+     two accounts of exclusion are compared rather than assumed
+     to agree.
+
+    PASS  Instance 1: Sigma = -k agrees with the asserted excluded sector on every cell of every relation   344/344
+    PASS  Instance 2: Sigma = -k agrees with the asserted excluded sector on every cell of every relation   408/408
+
+N.3  AN ADDRESS STANDS EXACTLY WHEN NO RELATION REACHES SIGMA = -k
+     exhaustive over every address of each envelope
+
+    PASS  Instance 1: the terminus test agrees with the boundaries on every address   1024/1024
+    PASS  Instance 1: min Sigma over the relations is [-1] on standing addresses and [-3] on excluded ones   [the two ranges do not meet]
+    PASS  Instance 2: the terminus test agrees with the boundaries on every address   4096/4096
+    PASS  Instance 2: min Sigma over the relations is [-1] on standing addresses and [-3] on excluded ones   [the two ranges do not meet]
+
+N.4  ON AN UNSATISFIABLE INSTANCE EVERY ADDRESS HAS A RELATION THERE
+     Tseitin formulas over 3-regular graphs, exhaustive
+
+    PASS  tseitin-8: every address carries a relation at Sigma = -k   4096/4096
+    PASS  tseitin-8: the best min Sigma anywhere is -3, never above -k   [no address escapes the excluded terminus, which is what unsatisfiability is in this reading]
+    PASS  tseitin-8: and no address stands, by the boundaries
+    PASS  tseitin-10: every address carries a relation at Sigma = -k   32768/32768
+    PASS  tseitin-10: the best min Sigma anywhere is -3, never above -k   [no address escapes the excluded terminus, which is what unsatisfiability is in this reading]
+    PASS  tseitin-10: and no address stands, by the boundaries
+    PASS  tseitin-12: every address carries a relation at Sigma = -k   262144/262144
+    PASS  tseitin-12: the best min Sigma anywhere is -3, never above -k   [no address escapes the excluded terminus, which is what unsatisfiability is in this reading]
+    PASS  tseitin-12: and no address stands, by the boundaries
+
+N.5  SHADOW REMOVAL ALONE DOES NOT DECIDE; THE SIGN DOES
+
+    PASS  a relation at a terminus occurs on standing and excluded addresses alike, so shadow removal is not the decision   [15 standing and 1009 excluded addresses carry a relation with no shadow]
+    PASS  the sign of the terminus is what separates them   [N.3 measures the separation as exact on every address]
+
+N.6  THE PROTOCOL CAN FAIL
+
+    PASS  the orientation is relation-relative, not raw   [a negative literal at a false content stands as the relation asserts it]
+    PASS  Sigma and the width share parity, so Sigma = 0 is unreachable at odd width   [Sigma values [-3, -1, 1, 3] at k = 3]
+    PASS  the decomposition is exact, with no floating point anywhere   [Fraction throughout]
+    PASS  inverting the orientation convention breaks the agreement, so N.3 is sensitive to the convention it rests on   [30 of 1024 addresses disagree once the sign is inverted]
+
+==========================================================================
+  APPENDIX N   28 of 28 checks pass
+==========================================================================

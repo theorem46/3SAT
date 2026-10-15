@@ -1,0 +1,86 @@
+==========================================================================
+  APPENDIX M -- THE CLOSURE STRUCTURE RESIDES IN THE BOUNDARY
+  the assertion constrains the envelope until only the standing
+  addresses remain possible; the joint structure of the boundaries
+  is read from them, not found by going through the space
+==========================================================================
+
+M.1  THE JOINT STRUCTURE IS READ FROM THE BOUNDARIES ALONE
+     for each pair, the shared contents and the orientations their
+     excluded sectors demand there.  No partial orientation is
+     formed and the envelope is not touched.
+
+      Instance 1: 43 boundaries, 289 opposed pairs, sharing counts {delta=1: 461, delta=2: 156, delta=3: 7}
+    PASS  Instance 1: the relations are read from the symbols of each pair, 289 of them   [at most C(m,2) = 903]
+    PASS  Instance 1: every relation names only contents both boundaries hold   [a relation outside the shared support would not be a relation of the pair]
+      Instance 2: 51 boundaries, 374 opposed pairs, sharing counts {delta=1: 630, delta=2: 150, delta=3: 4}
+    PASS  Instance 2: the relations are read from the symbols of each pair, 374 of them   [at most C(m,2) = 1275]
+    PASS  Instance 2: every relation names only contents both boundaries hold   [a relation outside the shared support would not be a relation of the pair]
+
+    PASS  reading the relations requires no address and no depth   [joint_relations takes the boundaries and nothing else; it forms no orientation, enters no stratum and touches no address]
+
+M.2  ON THE FAMILY WHERE RESOLUTION IS PROVABLY EXPONENTIAL
+     Tseitin formulas over 3-regular graphs, unsatisfiable, width 3
+     with no encoding step.  The boundaries hold the joint structure;
+     a traversal re-encounters it once per region it enters.
+
+          instance     n     m   stored  relations   traversal    ratio
+         tseitin-8    12    32      109         96          32       --
+        tseitin-10    15    40      136        120          64    1.25x
+        tseitin-12    18    48      163        144         128    1.20x
+        tseitin-14    21    56      190        168         256    1.17x
+        tseitin-16    24    64      217        192         512    1.14x
+        tseitin-18    27    72      244        216       1,024    1.12x
+        tseitin-20    30    80      271        240       2,048    1.11x
+        tseitin-22    33    88      298        264       4,096    1.10x
+        tseitin-24    36    96      325        288       8,192    1.09x
+        tseitin-26    39   104      352        312      16,384    1.08x
+
+    PASS  the relations held in the boundaries grow by a constant increment   [increment 24 at every step, relations 96 to 312]
+    PASS  the relations are linear in the number of boundaries   [relations/m from 3.00 to 3.00]
+    PASS  a traversal's encounters with the same structure double at every step   [32 to 16,384, ratio 2.00 throughout]
+    PASS  at the largest size the boundaries hold the structure in a small fraction of what a traversal meets   [312 relations against 16,384 encounters]
+
+M.3  THE RELATIONS ARE COMPLETE AND WITNESSED
+     a pair can close a region exactly when its excluded sectors
+     demand opposite orientations on a content they share.  For
+     every pair, the static read is checked against a constructed
+     partial orientation at which both boundaries stand forcing.
+
+    PASS  Instance 1: every relation read from the boundaries is witnessed by a partial orientation at which the pair closes   289/289
+    PASS  Instance 2: every relation read from the boundaries is witnessed by a partial orientation at which the pair closes   374/374
+    PASS  tseitin-8: every relation read from the boundaries is witnessed by a partial orientation at which the pair closes   96/96
+    PASS  tseitin-10: every relation read from the boundaries is witnessed by a partial orientation at which the pair closes   120/120
+    PASS  tseitin-12: every relation read from the boundaries is witnessed by a partial orientation at which the pair closes   144/144
+    PASS  tseitin-14: every relation read from the boundaries is witnessed by a partial orientation at which the pair closes   168/168
+    PASS  Instance 1: no pair outside the relations can demand opposite orientations on a shared content   [the read is exhaustive over pairs, so a closing pair cannot be missed]
+    PASS  Instance 2: no pair outside the relations can demand opposite orientations on a shared content   [the read is exhaustive over pairs, so a closing pair cannot be missed]
+    PASS  tseitin-8: no pair outside the relations can demand opposite orientations on a shared content   [the read is exhaustive over pairs, so a closing pair cannot be missed]
+    PASS  tseitin-10: no pair outside the relations can demand opposite orientations on a shared content   [the read is exhaustive over pairs, so a closing pair cannot be missed]
+
+    PASS  the relation is a fact about a pair of boundaries, not about a depth   [joint_relations consults only the mask and value of each pair; the witness is constructed afterwards to confirm the condition, and is no part of the read]
+
+M.4  GENERATION, WHEN THE LIST IS WANTED
+     an optional act, not part of the cost of the resolution.  It
+     yields the satisfiable addresses and nothing else.
+
+    PASS  Instance 1: generation yields exactly the committed solution set, 15 addresses
+    PASS  Instance 1: nothing outside the satisfiable set is produced   [the boundaries constrain the envelope until only the standing addresses remain possible]
+    PASS  Instance 1: what is stored is the boundaries, 140 symbols, and no address
+    PASS  Instance 2: generation yields exactly the committed solution set, 10 addresses
+    PASS  Instance 2: nothing outside the satisfiable set is produced   [the boundaries constrain the envelope until only the standing addresses remain possible]
+    PASS  Instance 2: what is stored is the boundaries, 166 symbols, and no address
+    PASS  tseitin-8: unsatisfiable, so generation yields nothing and the boundaries alone carry the certificate   [96 relations held in 109 symbols]
+    PASS  tseitin-10: unsatisfiable, so generation yields nothing and the boundaries alone carry the certificate   [120 relations held in 136 symbols]
+    PASS  tseitin-12: unsatisfiable, so generation yields nothing and the boundaries alone carry the certificate   [144 relations held in 163 symbols]
+
+M.5  THE PROTOCOL CAN FAIL
+
+    PASS  a pair with opposing demands on a shared content is reported   [shared 0b110, opposed 0b10]
+    PASS  a pair agreeing on every shared content is not reported   [the relation is opposition on a shared content, not mere sharing]
+    PASS  a pair sharing no content is not reported   [delta = 0, so the pair stands in no relation]
+    PASS  the Tseitin family is unsatisfiable, so the measurement is not taken only where an answer exists   [all 10 carry no standing address]
+
+==========================================================================
+  APPENDIX M   33 of 33 checks pass
+==========================================================================

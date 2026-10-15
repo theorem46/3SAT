@@ -1,0 +1,71 @@
+==========================================================================
+  APPENDIX D -- THE RESOLUTION, INSTANCE 1
+  validates Theorem 4 (the resolution) on n = 10, m = 43, k = 3
+==========================================================================
+
+D.1  THE ASSERTION
+      envelope      10 assertions + 1 mediation = 11
+      boundaries    3 x 43 = 129
+      forced        139 opposites, charged 0 (Axiom 2.2)
+      stored        140 symbols; the envelope holds 1024 addresses
+
+    PASS  acts = 140 = n + 1 + km   [expected 140]
+    PASS  boundaries asserted = 43 = m
+    PASS  every boundary carries exactly k = 3 symbols
+
+D.2  THE RESOLUTION -- PRODUCED FROM THE BOUNDARIES
+      no address is formed in order to be refused.  The ledger's
+      `discarded` figure is the measurement of that.
+
+      addresses standing: 15
+        FFTTFTFFTF
+        FFTTFTFFTT
+        TFFTFFFFFT
+        TFFTFFTFFT
+        TFTTFFFFFT
+        TFTTFTFFTF
+        TFTTFTFFTT
+        TFTTTTFFTF
+        TFTTTTFFTT
+        TTTFFTFFTF
+        TTTFTTFFTF
+        TTTTFTFFTF
+        TTTTFTFFTT
+        TTTTTTFFTF
+        TTTTTTFFTT
+
+      produced      15
+      discarded     0
+      forced        34 orientations, charged 0 (Axiom 2.2)
+      chosen        22 orientations
+      consultations 395 boundary reads
+      deepest held  5 partial orientations
+
+    PASS  nothing formed and discarded: 0   [discarding is the signature of search]
+    PASS  addresses formed (15) = addresses standing (15)
+    PASS  the held state is bounded by n: 5 <= 10
+
+D.3  VERIFICATION AGAINST THE COMMITTED SOLUTION SET
+      the solution set ships with the instance and is computed
+      independently of this resolution.  Exact set equality is
+      required: one address wrong fails the run.
+
+    PASS  exact set equality with the committed solution set   [got 15, committed 15, symmetric difference 0]
+    PASS  the planted solution TFTTFTFFTF is produced
+    PASS  no produced address is excluded by any boundary
+
+D.4  ADVERSARIAL -- THE COMPLETE TRUTH TABLE
+      a VERIFICATION survey, charged to no measure: each of the
+      2^n addresses is resolved against the boundaries and against
+      an independent clause evaluation, and the two verdicts must
+      agree on every address.  The production of .2 is then
+      required to equal the survey exactly.
+
+    PASS  boundary verdict agrees with clause evaluation on all 1024   [1024/1024]
+    PASS  the produced set equals the surveyed set exactly   [produced 15, surveyed 15]
+    PASS  every excluded address is named by at least one boundary   [1009 excluded]
+    PASS  standing + excluded = 2^n
+
+==========================================================================
+  APPENDIX D   13 of 13 checks pass
+==========================================================================

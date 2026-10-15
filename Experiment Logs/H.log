@@ -1,0 +1,105 @@
+==========================================================================
+  APPENDIX H -- MUTATION AUDIT OF THE PROTOCOLS
+  faults injected one at a time; every fault must be caught
+  by at least one protocol, and the baseline must pass cleanly
+==========================================================================
+
+H.1  BASELINE -- THE UNMODIFIED PROTOCOLS PASS
+
+    PASS  A_envelope exits 0 unmodified   [exit 0]
+    PASS  B_reversal exits 0 unmodified   [exit 0]
+    PASS  C_solved_state exits 0 unmodified   [exit 0]
+    PASS  D_instance1 exits 0 unmodified   [exit 0]
+    PASS  E_instance2 exits 0 unmodified   [exit 0]
+    PASS  F_generation exits 0 unmodified   [exit 0]
+    PASS  G_comparison exits 0 unmodified   [exit 0]
+    PASS  I_production exits 0 unmodified   [exit 0]
+    PASS  J_adversarial exits 0 unmodified   [exit 0]
+    PASS  L_comparison exits 0 unmodified   [exit 0]
+    PASS  M_residence exits 0 unmodified   [exit 0]
+    PASS  N_distinguish exits 0 unmodified   [exit 0]
+    PASS  O_assertion exits 0 unmodified   [exit 0]
+    PASS  P_scaling exits 0 unmodified   [exit 0]
+    PASS  Q_benchmark exits 0 unmodified   [exit 0]
+    PASS  R_worked exits 0 unmodified   [exit 0]
+    PASS  S_lighthouse exits 0 unmodified   [exit 0]
+
+H.2  MUTATION -- EVERY FAULT MUST BE CAUGHT
+
+    fault                   A  B  C  D  E  F  G  I   caught by
+    ----------------------------------------------------------
+    no-opposition           .  .  .  X  X  X  X  X   DEFGI
+    partial-mask            .  .  .  X  X  X  X  X   DEFGI
+    stands-inverted         .  .  .  X  X  X  .  X   DEFI
+    stands-first-only       .  .  .  X  X  X  .  X   DEFI
+    cost-no-mediation       .  .  .  X  X  X  X  .   DEFG
+    cost-n-per-boundary     .  .  .  X  X  X  X  .   DEFG
+    sig-reversed            .  .  .  X  X  X  .  X   DEFI
+    nth-off-by-one          .  .  .  .  .  X  .  X   FI
+    emit-unclosed           .  .  .  X  X  X  X  X   DEFGI
+    no-eager-forcing        .  .  .  X  X  X  X  X   DEFGI
+    survey-all              .  .  .  X  X  X  .  X   DEFI
+    solution-flipped        .  X  X  X  .  X  X  X   BCDFGI
+    solution-dropped        .  X  X  .  X  X  X  X   BCEFGI
+    clause-dropped          .  X  X  X  .  X  X  X   BCDFGI
+    lysis-no-transpose      .  .  X  .  .  .  .  .   C
+    descent-short           X  .  .  .  .  .  .  .   A
+    ledger-wrong-pairs      X  .  .  .  .  .  .  .   A
+    descent-not-binary      X  .  .  .  .  .  .  .   A
+    boundary-word-short     .  X  .  .  .  .  .  .   B
+    wrong-centre            .  .  X  .  .  .  .  .   C
+    enum-undercharged       .  .  .  .  .  .  X  .   G
+
+    X = protocol failed (fault caught)    . = protocol passed
+
+    PASS  every one of the 21 faults is caught by some protocol   [none undetected]
+H.2b MUTATION OF THE COMPOSITION -- EVERY FAULT MUST BE CAUGHT BY S
+     composition.py is imported by S_lighthouse alone, so each of
+     these faults is run against S and S must exit non-zero.
+
+    comp-barred-inverted      caught      barred() returns the opposite verdict
+    comp-terminus-literal     caught      terminus built from the literal, not its opposite
+    comp-residual-partial     caught      at_residual() ignores one content
+    comp-enter-unpresented    caught      the descent enters an unpresented sector
+
+    PASS  every one of the 4 composition faults is caught by S   [none undetected]
+
+    PASS  every protocol is shown capable of failing   [all 8 exercised]
+
+H.3  VACUOUS PASSING -- NO DATA MUST FAIL, NOT PASS
+     a protocol handed missing or empty input must exit non-zero
+     rather than reporting a vacuous pass over an empty workload
+
+    PASS  B_reversal fails when instance1.json is missing   [exit 1]
+    PASS  C_solved_state fails when instance1.json is missing   [exit 1]
+    PASS  D_instance1 fails when instance1.json is missing   [exit 1]
+    PASS  F_generation fails when instance1.json is missing   [exit 1]
+    PASS  G_comparison fails when instance1.json is missing   [exit 1]
+
+    PASS  B_reversal fails on an empty clause list   [exit 1]
+    PASS  D_instance1 fails on an empty clause list   [exit 1]
+    PASS  G_comparison fails on an empty clause list   [exit 1]
+
+    PASS  D_instance1 fails on an empty solution set   [exit 1]
+    PASS  F_generation fails on an empty solution set   [exit 1]
+
+H.4  THE COMMITTED LOGS MATCH A FRESH RUN
+
+    PASS  A.log identical to a fresh run of A_envelope   [12485 vs 12485 bytes]
+    PASS  B.log identical to a fresh run of B_reversal   [3342 vs 3342 bytes]
+    PASS  C.log identical to a fresh run of C_solved_state   [4237 vs 4237 bytes]
+    PASS  D.log identical to a fresh run of D_instance1   [2814 vs 2814 bytes]
+    PASS  E.log identical to a fresh run of E_instance2   [2741 vs 2741 bytes]
+    PASS  F.log identical to a fresh run of F_generation   [6552 vs 6552 bytes]
+    PASS  G.log identical to a fresh run of G_comparison   [8619 vs 8619 bytes]
+
+H.5  ENVIRONMENT INDEPENDENCE
+     hash seed, working directory and locale must not change output
+
+    PASS  B_reversal: identical output across 5 environments and 2 cwds   [1 distinct results]
+    PASS  D_instance1: identical output across 5 environments and 2 cwds   [1 distinct results]
+    PASS  G_comparison: identical output across 5 environments and 2 cwds   [1 distinct results]
+
+==========================================================================
+  APPENDIX H   40 of 40 checks pass
+==========================================================================

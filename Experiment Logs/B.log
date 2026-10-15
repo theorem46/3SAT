@@ -1,0 +1,72 @@
+==========================================================================
+  APPENDIX B -- THE CLAUSE BOUNDARY AND ITS REVERSAL
+  validates Theorem 6.1, Theorem 6.2, Corollary 6.3,
+            Theorem 7.1, Theorem 7.2, Corollary 7.3
+==========================================================================
+
+  clauses under test: 94 (43 + 51)
+
+B.1  AXIOM 2.3 -- OPPOSITION IS INVOLUTIVE AND COMPONENT-WISE
+     negation acts component-wise and preserves the order of mediation
+
+    PASS  involution: not-not-C = C for every clause   94/94
+    PASS  order of mediation preserved under negation   94/94
+    PASS  every component negated, none left standing   94/94
+
+B.2  THEOREM 7.1 -- THE EXCLUDED SECTOR IS THE REVERSAL
+     tested against an INDEPENDENT negation that never uses reversal:
+     the sector is computed by exhaustive truth-table complement over
+     the clause's own 2^k cells, then compared to the reversal.
+
+    PASS  reversal equals the independently computed excluded cell   94/94
+
+B.3  COROLLARY 6.3 -- EXACTLY ONE CELL OF 2^k IS EXCLUDED
+     exhaustive: all 2^k cells of every clause's own resolution
+
+    PASS  exactly one excluded cell per clause   94/94
+    PASS  exactly 2^k - 1 standing cells per clause   94/94   [752 cells tested exhaustively]
+
+B.4  THEOREM 7.2 -- THE BOUNDARY IS WRITTEN IN EXACTLY k SYMBOLS
+
+    PASS  boundary carries exactly k fixed symbols   94/94
+    PASS  boundary is positioned over the envelope's n contents   94/94
+
+B.5  THEOREM 6.2 -- CAPACITY IS k AND NOT n
+     the same clause is placed in envelopes of increasing depth;
+     its written boundary and its resolution must not change.
+
+    PASS  written boundary unchanged across envelope depths 4 .. 200   [symbol count {3}]
+    PASS  symbol count independent of n   [always 3]
+    PASS  clause resolution = 2^k = 8 regardless of envelope depth
+
+B.6  THEOREM 6.2 (cont.) -- WIDTH INDEPENDENCE FOR k = 3, 4, 5
+     Corollary 6.3 and Theorem 7.2 restated at other widths
+
+    PASS  k = 3: exactly one excluded cell of 2^3 = 8
+    PASS  k = 3: boundary written in 3 symbols
+    PASS  k = 4: exactly one excluded cell of 2^4 = 16
+    PASS  k = 4: boundary written in 4 symbols
+    PASS  k = 5: exactly one excluded cell of 2^5 = 32
+    PASS  k = 5: boundary written in 5 symbols
+
+B.7  AXIOM 2.2 -- THE OPPOSITE IS FORCED, CHARGED NOTHING
+
+    PASS  Instance 1: acts = 140 = n + 1 + km = 140   [forced 139 charged 0]
+    PASS  Instance 2: acts = 166 = n + 1 + km = 166   [forced 165 charged 0]
+
+B.8  COROLLARY 7.3 -- THE COST OF THE ASSERTION
+
+    PASS  Instance 1: envelope 11 + boundaries 129 = 140   [n=10 m=43 k=3]
+    PASS  Instance 2: envelope 13 + boundaries 153 = 166   [n=12 m=51 k=3]
+
+B.9  ADVERSARIAL -- THE BOUNDARY MUST EXCLUDE EXACTLY ITS OWN CELL
+     every clause's boundary tested against every address of its
+     envelope: the addresses it names must be exactly the addresses
+     at which that clause does not stand.
+
+    PASS  Instance 1: boundary names exactly the failing addresses   43/43   [2^(n-k) = 128 per boundary]
+    PASS  Instance 2: boundary names exactly the failing addresses   51/51   [2^(n-k) = 512 per boundary]
+
+==========================================================================
+  APPENDIX B   23 of 23 checks pass
+==========================================================================

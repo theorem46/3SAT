@@ -1,0 +1,131 @@
+==========================================================================
+  APPENDIX L -- RELATIONAL LYSIS BESIDE THE OTHER METHODS
+  RL is charged in structural acts, for the assertion, and is
+  reported beside what it must hold.  The traversal tally below is a
+  verification device and is charged to nothing: by Theorem 15.1 a
+  configuration resides independently of any act of retrieval.
+  The other methods are charged in elementary operations.
+  The two are reported side by side and never combined.
+==========================================================================
+
+L.1  EVERY METHOD RETURNS THE SAME MODEL SET
+     without this the comparison has no meaning: the methods must
+     be answering one question.  Checked against the committed
+     solution set, not against each other.
+
+    PASS  Instance 1: the boundaries admit exactly the committed set   [15 addresses]
+    PASS  Instance 1: exhaustive enumeration returns the committed set   [15 models, 15 distinct]
+    PASS  Instance 1: Davis-Putnam 1960 returns the committed set   [15 models, 15 distinct]
+    PASS  Instance 1: DPLL 1962, Jeroslow-Wang returns the committed set   [15 models, 15 distinct]
+    PASS  Instance 1: clause learning, VSIDS returns the committed set   [15 models, 15 distinct]
+    PASS  Instance 2: the boundaries admit exactly the committed set   [10 addresses]
+    PASS  Instance 2: exhaustive enumeration returns the committed set   [10 models, 10 distinct]
+    PASS  Instance 2: Davis-Putnam 1960 returns the committed set   [10 models, 10 distinct]
+    PASS  Instance 2: DPLL 1962, Jeroslow-Wang returns the committed set   [10 models, 10 distinct]
+    PASS  Instance 2: clause learning, VSIDS returns the committed set   [10 models, 10 distinct]
+
+L.2  RELATIONAL LYSIS, IN ITS OWN MEASURES
+     structural acts for the assertion; the traversal tally for
+     obtaining the addresses.  No address is a unit of either.
+
+  Instance 1   n = 10, m = 43, k = 3
+    STRUCTURAL ACTS                           
+      assertion of the instance (n + 1 + km)          140
+      envelope (n + 1)                                 11
+      boundaries (km)                                 129
+      opposites forced, charged nothing               139
+    TRAVERSAL TALLY -- CHARGED TO NOTHING     
+      boundary consultations                          395
+      orientations the descent chose                   22
+      charged total                                   439
+      orientations forced, charged nothing             34
+      regions closed by the boundaries                  8
+
+    PASS  Instance 1: the assertion is n + 1 + km acts
+    PASS  Instance 1: the production ledger charges no address   [emitted and discarded are reported beside the cost, never in it]
+  Instance 2   n = 12, m = 51, k = 3
+    STRUCTURAL ACTS                           
+      assertion of the instance (n + 1 + km)          166
+      envelope (n + 1)                                 13
+      boundaries (km)                                 153
+      opposites forced, charged nothing               165
+    TRAVERSAL TALLY -- CHARGED TO NOTHING     
+      boundary consultations                          598
+      orientations the descent chose                   19
+      charged total                                   636
+      orientations forced, charged nothing             48
+      regions closed by the boundaries                 10
+
+    PASS  Instance 2: the assertion is n + 1 + km acts
+    PASS  Instance 2: the production ledger charges no address   [emitted and discarded are reported beside the cost, never in it]
+
+L.3  THE OTHER METHODS, IN THEIRS
+     elementary operations (Cook and Reckhow 1973), with each
+     method's own counters.  These figures are never divided into
+     a structural act, and never into a traversal tally.
+
+  Instance 1   n = 10, m = 43
+      method                         elem. ops    dec    prop   confl  learned
+      exhaustive enumeration            38,694      0       0       0        0
+      Davis-Putnam 1960                 11,836     22      45       8        0
+      DPLL 1962, Jeroslow-Wang          10,033     11      36       7        0
+      clause learning, VSIDS            14,452     22      54       8        8
+
+  Instance 2   n = 12, m = 51
+      method                         elem. ops    dec    prop   confl  learned
+      exhaustive enumeration           165,000      0       0       0        0
+      Davis-Putnam 1960                 16,428     19      63      10        0
+      DPLL 1962, Jeroslow-Wang          13,892      8      53       6        0
+      clause learning, VSIDS            16,652     21      49      12       12
+
+    PASS  Instance 1: exhaustive enumeration charges a positive cost in its own measure   [38,694 elementary operations]
+    PASS  Instance 1: Davis-Putnam 1960 charges a positive cost in its own measure   [11,836 elementary operations]
+    PASS  Instance 1: DPLL 1962, Jeroslow-Wang charges a positive cost in its own measure   [10,033 elementary operations]
+    PASS  Instance 1: clause learning, VSIDS charges a positive cost in its own measure   [14,452 elementary operations]
+    PASS  Instance 2: exhaustive enumeration charges a positive cost in its own measure   [165,000 elementary operations]
+    PASS  Instance 2: Davis-Putnam 1960 charges a positive cost in its own measure   [16,428 elementary operations]
+    PASS  Instance 2: DPLL 1962, Jeroslow-Wang charges a positive cost in its own measure   [13,892 elementary operations]
+    PASS  Instance 2: clause learning, VSIDS charges a positive cost in its own measure   [16,652 elementary operations]
+
+L.4  THE QUANTITIES COMMON TO ALL METHODS
+     these need no translation between measures, so these are the
+     only figures compared directly.  Symbols held is counted
+     BEYOND the instance, which every method holds.
+
+  Instance 1   n = 10, m = 43, envelope 1,024 addresses, 15 stand
+      method                           formed  discarded  held beyond instance
+      Relational Lysis                     15          0                     5
+      exhaustive enumeration            1,024      1,009                   160
+      Davis-Putnam 1960                    16          1                   160
+      DPLL 1962, Jeroslow-Wang             16          1                   160
+      clause learning, VSIDS               17          2                   184
+
+    PASS  Instance 1: production forms exactly the addresses that stand
+    PASS  Instance 1: production discards none   [measured in the descent; Appendix H's `no-eager-forcing` fault raises it above zero]
+    PASS  Instance 1: exhaustive enumeration forms the whole envelope and discards all but the answer
+    PASS  Instance 1: every method that discards is named   [exhaustive enumeration, Davis-Putnam 1960, DPLL 1962, Jeroslow-Wang, clause learning, VSIDS]
+    PASS  Instance 1: production holds the fewest symbols beyond the instance   [5 against 160, 160, 160, 184]
+  Instance 2   n = 12, m = 51, envelope 4,096 addresses, 10 stand
+      method                           formed  discarded  held beyond instance
+      Relational Lysis                     10          0                     7
+      exhaustive enumeration            4,096      4,086                   132
+      Davis-Putnam 1960                    12          2                   132
+      DPLL 1962, Jeroslow-Wang             10          0                   132
+      clause learning, VSIDS               10          0                   168
+
+    PASS  Instance 2: production forms exactly the addresses that stand
+    PASS  Instance 2: production discards none   [measured in the descent; Appendix H's `no-eager-forcing` fault raises it above zero]
+    PASS  Instance 2: exhaustive enumeration forms the whole envelope and discards all but the answer
+    PASS  Instance 2: every method that discards is named   [exhaustive enumeration, Davis-Putnam 1960]
+    PASS  Instance 2: production holds the fewest symbols beyond the instance   [7 against 132, 132, 132, 168]
+
+L.5  THE PROTOCOL CAN FAIL
+
+    PASS  the methods are implemented independently of the RL modules   [methods.py imports neither resolution.py nor production.py, so a classical method cannot be the RL mechanism under another name]
+    PASS  the methods disagree with one another on their own counters   [identical counters across methods would mean one procedure had been written several times: decisions [0, 22, 11, 22]]
+    PASS  the model-set comparison is not an identity on its own argument   [the committed set is the reference, and it is non-empty]
+    PASS  a method returning the wrong model set would be reported   [the comparison in L.1 is against the committed set]
+
+==========================================================================
+  APPENDIX L   36 of 36 checks pass
+==========================================================================

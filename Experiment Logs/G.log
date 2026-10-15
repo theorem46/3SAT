@@ -1,0 +1,142 @@
+==========================================================================
+  APPENDIX G -- THE COST COMPARISON
+  elementary operation in the sense of Cook, S. A. and Reckhow, R. A. (1973), JCSS 7(4), 354-375
+  structural acts, elementary operations and bookkeeping
+  are reported separately and never combined
+==========================================================================
+
+G.1  THE ASSERTION COST IS n + 1 + km
+
+    PASS  Instance 1: 140 acts = 10 + 1 + 3x43   [assertions 139, mediations 1, forced 139 charged 0]
+    PASS  Instance 2: 166 acts = 12 + 1 + 3x51   [assertions 165, mediations 1, forced 165 charged 0]
+
+G.2  BOTH METHODS RETURN THE SAME SATISFYING ASSIGNMENTS
+
+    PASS  Instance 1: enumeration finds 15, committed set has 15
+    PASS  Instance 2: enumeration finds 10, committed set has 10
+
+G.3  THE COMPARISON
+
+  Instance 1   n = 10, m = 43, k = 3
+                                                 RL    Enumeration
+  ----------------------------------------------------------------
+  growth of what is stored                   linear    exponential
+  SYMBOLS HELD                                  140            150
+    the boundaries (n + 1 + km)                 140              -
+    addresses retained                            -        15 x 10
+  ADDRESSES FORMED                               15          1,024
+    of those, discarded                           0          1,009
+  acts to assert the structure                  140              -
+    envelope (n + 1)                             11              -
+    boundaries (km)                             129              -
+  opposites forced, charged 0                   139              -
+  orientations forced by a boundary              34              -
+  orientations the descent chose                 22              -
+  boundary consultations                        395              -
+  literal reads                                   -         14,152
+  symbol writes                                   -         10,390
+  satisfying assignments                         15             15
+  ----------------------------------------------------------------
+  symbols held: 140 against 150   (1.07 to 1)
+  addresses formed: 15 against 1,024   (68 to 1)
+  addresses discarded: 0 against 1,009
+
+  The two columns are compared only where the unit is common:
+  symbols held, and addresses formed.  Structural acts and
+  elementary operations are reported in their own measures and
+  are never divided into one another (conventions.py).
+
+  Instance 2   n = 12, m = 51, k = 3
+                                                 RL    Enumeration
+  ----------------------------------------------------------------
+  growth of what is stored                   linear    exponential
+  SYMBOLS HELD                                  166            120
+    the boundaries (n + 1 + km)                 166              -
+    addresses retained                            -        10 x 12
+  ADDRESSES FORMED                               10          4,096
+    of those, discarded                           0          4,086
+  acts to assert the structure                  166              -
+    envelope (n + 1)                             13              -
+    boundaries (km)                             153              -
+  opposites forced, charged 0                   165              -
+  orientations forced by a boundary              48              -
+  orientations the descent chose                 19              -
+  boundary consultations                        598              -
+  literal reads                                   -         57,864
+  symbol writes                                   -         49,272
+  satisfying assignments                         10             10
+  ----------------------------------------------------------------
+  symbols held: 166 against 120   (0.72 to 1)
+  addresses formed: 10 against 4,096   (410 to 1)
+  addresses discarded: 0 against 4,086
+
+  The two columns are compared only where the unit is common:
+  symbols held, and addresses formed.  Structural acts and
+  elementary operations are reported in their own measures and
+  are never divided into one another (conventions.py).
+
+G.3z  THE RL COLUMN IS MEASURED, NOT DECLARED
+      every RL figure above comes from the production ledger or
+      the assertion.  These checks fail if any of them is a
+      literal rather than a measurement.
+
+    PASS  Instance 1: addresses produced 15 equals the committed solution count
+    PASS  Instance 1: addresses discarded is 0, measured from the descent   [a discard is an address formed and then thrown away; the counter rises under Appendix H's `no-eager-forcing` fault]
+    PASS  Instance 1: production holds no retained address, while enumeration retains 15   [deepest held orientation 5 <= n = 10]
+    PASS  Instance 1: the ledger's charged total is its own parts   [consultations 395, chosen 22, branches 22; forced 34 charged 0]
+    PASS  Instance 1: enumeration forms 2^n and discards 1009, production forms 15 and discards 0   [both sides checked against their own counters]
+    PASS  Instance 2: addresses produced 10 equals the committed solution count
+    PASS  Instance 2: addresses discarded is 0, measured from the descent   [a discard is an address formed and then thrown away; the counter rises under Appendix H's `no-eager-forcing` fault]
+    PASS  Instance 2: production holds no retained address, while enumeration retains 10   [deepest held orientation 7 <= n = 12]
+    PASS  Instance 2: the ledger's charged total is its own parts   [consultations 598, chosen 19, branches 19; forced 48 charged 0]
+    PASS  Instance 2: enumeration forms 2^n and discards 4086, production forms 10 and discards 0   [both sides checked against their own counters]
+
+G.3a  THE ACCOUNTING IS PINNED TO CLOSED FORMS
+      neither column may be silently under- or over-charged:
+      each measure is bounded above and below by a form derived from
+      the method itself, so an accounting error fails the protocol.
+
+    PASS  Instance 1: enumeration writes 10,390 >= n*2^n + retained = 10,390   [an address cannot be tested before it is formed]
+    PASS  Instance 1: enumeration writes exactly n*2^n + retained   [10,390 vs 10,390]
+    PASS  Instance 1: enumeration reads 14,152 in [2^n, 2^n*km] = [1,024, 132,096]
+    PASS  Instance 1: RL acts 140 >= n + 1 = 11 and >= km = 129
+    PASS  Instance 1: RL acts == (n + 1) + km exactly
+    PASS  Instance 1: forced opposites 139 == n + km, all charged 0
+    PASS  Instance 1: ratio 175 recomputed from the two measures
+    PASS  Instance 2: enumeration writes 49,272 >= n*2^n + retained = 49,272   [an address cannot be tested before it is formed]
+    PASS  Instance 2: enumeration writes exactly n*2^n + retained   [49,272 vs 49,272]
+    PASS  Instance 2: enumeration reads 57,864 in [2^n, 2^n*km] = [4,096, 626,688]
+    PASS  Instance 2: RL acts 166 >= n + 1 = 13 and >= km = 153
+    PASS  Instance 2: RL acts == (n + 1) + km exactly
+    PASS  Instance 2: forced opposites 165 == n + km, all charged 0
+    PASS  Instance 2: ratio 645 recomputed from the two measures
+
+G.4  ONE QUESTION, PUT TO EACH
+     'does this address satisfy?' -- RL asks the boundaries;
+     enumeration must have built and kept its answers first.
+
+    PASS  Instance 1: RL answers in 129 comparisons, verdict True   [enumeration first pays 24,542]
+    PASS  Instance 2: RL answers in 153 comparisons, verdict True   [enumeration first pays 107,136]
+
+G.5  STORAGE
+
+    PASS  Instance 1: RL stores 140 symbols, enumeration retains 150   [enumeration also wrote 10,240 it did not keep]
+    PASS  Instance 2: RL stores 166 symbols, enumeration retains 120   [enumeration also wrote 49,152 it did not keep]
+
+G.6  BOOKKEEPING, REPORTED AND EXCLUDED
+     the loop counters, container management and index arithmetic of
+     this program are not charged to either method.  They are named
+     here so that no cost above can be attributed to them.
+
+    PASS  Instance 1: bookkeeping 2,048 operations, charged to neither   [excluded from both columns above]
+    PASS  Instance 2: bookkeeping 8,192 operations, charged to neither   [excluded from both columns above]
+
+G.7  THE GROWTH BETWEEN THE TWO INSTANCES
+
+    PASS  RL: 140 -> 166 acts (+26) for +2 contents, +8 clauses   [matches n + 1 + km exactly]
+    PASS  Enumeration: 24,542 -> 107,136 operations (4.4x)
+    PASS  ratio moves 175 -> 645
+
+==========================================================================
+  APPENDIX G   37 of 37 checks pass
+==========================================================================

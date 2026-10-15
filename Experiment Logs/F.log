@@ -1,0 +1,99 @@
+==========================================================================
+  APPENDIX F -- THE BOUNDARY IS THE RECORD
+  validates Theorem 5: the count, membership, the i-th address and
+            the excluding boundary, all from the boundaries alone,
+            in memory independent of how many addresses stand
+==========================================================================
+
+F.1  WHAT IS STORED
+
+    PASS  Instance 1: stored symbols = 140 = n + 1 + km
+    PASS  Instance 1: the store is 43 boundaries, two integers each, and no address   [the envelope it describes holds 1024 addresses]
+    PASS  Instance 1: each boundary fixes exactly k = 3 contents
+    PASS  Instance 2: stored symbols = 166 = n + 1 + km
+    PASS  Instance 2: the store is 51 boundaries, two integers each, and no address   [the envelope it describes holds 4096 addresses]
+    PASS  Instance 2: each boundary fixes exactly k = 3 contents
+
+F.2  HOW MANY STAND -- PRODUCED FROM THE BOUNDARIES
+
+    PASS  Instance 1: count = 15 matches the committed solution set
+    PASS  Instance 1: the count was produced, not surveyed   [0 discarded over an envelope of 1024]
+    PASS  Instance 2: count = 10 matches the committed solution set
+    PASS  Instance 2: the count was produced, not surveyed   [0 discarded over an envelope of 4096]
+
+F.3  DOES THIS ADDRESS STAND -- EXHAUSTIVE OVER THE ENVELOPE
+     a verification survey, charged to no measure: km comparisons
+     each, no list consulted
+
+    PASS  Instance 1: membership correct on every address   1024/1024
+    PASS  Instance 2: membership correct on every address   4096/4096
+
+F.4  THE i-th STANDING ADDRESS, PRODUCED FROM THE BOUNDARIES
+
+    PASS  Instance 1: the production order carries 15 addresses, all distinct
+    PASS  Instance 1: the i-th address correct for every i   15/15
+    PASS  Instance 1: an index past the end returns nothing
+    PASS  Instance 2: the production order carries 10 addresses, all distinct
+    PASS  Instance 2: the i-th address correct for every i   10/10
+    PASS  Instance 2: an index past the end returns nothing
+
+F.5  THE HELD STATE, COUNTED STRUCTURALLY
+     a property of the mechanism and of no interpreter: the
+     boundaries, plus one partial orientation per pending branch
+
+    PASS  Instance 1: deepest held state 5 <= n = 10   [140 stored symbols + 5 partial orientations]
+    PASS  Instance 1: the held state does not reference the standing count 15
+    PASS  Instance 2: deepest held state 7 <= n = 12   [166 stored symbols + 7 partial orientations]
+    PASS  Instance 2: the held state does not reference the standing count 10
+
+F.6  MEMORY IS INDEPENDENT OF HOW MANY ADDRESSES STAND
+     instances planted to carry 1, 2, 4, ... 64 standing addresses
+     over the SAME n, so the envelope is fixed at 4,096 throughout
+
+       standing  held orientation  boundaries  production holds  storing holds
+              1                 2         142               144            154
+              2                 3         130               133            154
+              4                 4         118               122            166
+              8                 4         106               110            202
+             16                 6          94               100            286
+             32                 6          82                88            466
+             64                 7          70                77            838
+
+    PASS  planted-2^0: 1 stand, 1 produced, 0 discarded
+    PASS  planted-2^1: 2 stand, 2 produced, 0 discarded
+    PASS  planted-2^2: 4 stand, 4 produced, 0 discarded
+    PASS  planted-2^3: 8 stand, 8 produced, 0 discarded
+    PASS  planted-2^4: 16 stand, 16 produced, 0 discarded
+    PASS  planted-2^5: 32 stand, 32 produced, 0 discarded
+    PASS  planted-2^6: 64 stand, 64 produced, 0 discarded
+    PASS  the held orientation never exceeds n, at any standing count   [depths [2, 3, 4, 4, 6, 6, 7], n = 12]
+    PASS  production holds at most the boundaries plus n, at every standing count   [the bound of Theorem 5, in the unit the theorem states it]
+    PASS  what storing holds is exactly the boundaries plus n per address kept   [addresses retained: [1, 2, 4, 8, 16, 32, 64]]
+    PASS  production's bound contains no term in the standing count, while storing's grows linearly in it   [storing retains 12 symbols at 1 standing and 768 at 64; production holds 2 and 7]
+    PASS  the excess of storing over production widens with the standing count   [10 symbols at 1 standing, 761 at 64]
+
+F.7  NO CONTAINER OF ADDRESSES IS HELD
+     every container in the resolution's frame must be one of the
+     four structural objects of the mechanism.  Anything else is a
+     store, and fails the run.
+
+    PASS  Instance 1: every container held is bounded by the asserted structure   [held ['bnds', 'cforcing', 'clive', 'forcing', 'forcing0', 'index', 'live', 'live0', 'stack']; unbounded: none]
+    PASS  Instance 1: the addresses held number one per pending branch, 3 <= n = 10
+    PASS  Instance 1: the live sets hold boundary indices and the forcing maps hold single content bits, not addresses
+    PASS  Instance 1: no container's size reaches the standing count (15) by accumulation   [a list of produced addresses would appear here as an undeclared container]
+    PASS  Instance 2: every container held is bounded by the asserted structure   [held ['bnds', 'cforcing', 'clive', 'forcing', 'forcing0', 'index', 'live', 'live0', 'stack']; unbounded: none]
+    PASS  Instance 2: the addresses held number one per pending branch, 6 <= n = 12
+    PASS  Instance 2: the live sets hold boundary indices and the forcing maps hold single content bits, not addresses
+    PASS  Instance 2: no container's size reaches the standing count (10) by accumulation   [a list of produced addresses would appear here as an undeclared container]
+
+F.8  WHICH BOUNDARY EXCLUDES THIS ADDRESS -- NAMED, NOT DETECTED
+     exhaustive over the envelope.  Every named boundary is checked
+     against the clause it was asserted from, so the test does not
+     re-evaluate its own predicate.
+
+    PASS  Instance 1: the named boundaries are exactly the failing clauses, on every address   1024/1024   [1009 excluded addresses]
+    PASS  Instance 2: the named boundaries are exactly the failing clauses, on every address   4096/4096   [4086 excluded addresses]
+
+==========================================================================
+  APPENDIX F   44 of 44 checks pass
+==========================================================================

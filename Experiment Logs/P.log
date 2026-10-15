@@ -1,0 +1,68 @@
+==========================================================================
+  APPENDIX P -- COMPUTE AND STORAGE ACROSS SIZE
+  planted random 3-SAT at density 4.26, one instance per size
+  RL in structural acts; the others in elementary
+  operations.  The two measures are never combined.
+==========================================================================
+
+P.1  EVERY METHOD RETURNS THE SAME MODEL SET AT EVERY SIZE
+
+    PASS  n=10: the classical methods agree with production, 12 models   4/4
+    PASS  n=12: the classical methods agree with production, 8 models   4/4
+    PASS  n=14: the classical methods agree with production, 10 models   4/4
+    PASS  n=16: the classical methods agree with production, 2 models   4/4
+    PASS  n=18: the classical methods agree with production, 6 models   4/4
+
+P.2  STORAGE ACROSS SIZE
+     symbols held beyond the instance, which every method holds
+
+         n     m  models      RL       enumeration     Davis-Putnam        DPLL (JW)  clause learning
+        10    42      12       6               130              130              130              139
+        12    51       8       5               108              108              108              123
+        14    59      10       7               154              154              154              181
+        16    68       2       4                48               48               48               87
+        18    76       6       7               126              126              126              195
+
+    PASS  what Relational Lysis holds stays within n at every size   [held [6, 5, 7, 4, 7] at n = [10, 12, 14, 16, 18]]
+    PASS  what every other method holds exceeds it at every size   [each retains its models, its learned clauses and its trail]
+    PASS  what the other methods hold is exactly n symbols per model retained, plus the trail   5/5   [clause learning holds its learned database in addition]
+    PASS  what Relational Lysis holds contains no term in the model count   [models [12, 8, 10, 2, 6] against holdings [6, 5, 7, 4, 7]: the second does not follow the first]
+    PASS  the ratio therefore follows the answer's size, not the method   [21x to 18x across these instances, tracking model counts [12, 8, 10, 2, 6]]
+
+P.3  COMPUTE ACROSS SIZE, EACH IN ITS OWN MEASURE
+     RL: structural acts to assert.  The traversal tally is a
+     verification device and is charged to nothing.
+     The others: elementary operations (Cook and Reckhow 1973).
+
+         n     m |   RL acts   (tally) |      enumeration    Davis-Putnam       DPLL (JW) clause learning
+        10    42 |       137       345 |           40,724           7,749           8,587           8,217
+        12    51 |       166       639 |          167,262          16,394          15,664          14,826
+        14    59 |       192       797 |          720,490          24,481          17,909          28,249
+        16    68 |       221       797 |        2,918,718          22,130          20,988          30,559
+        18    76 |       247     1,667 |       12,048,710          61,419          46,239          77,819
+
+    PASS  the assertion is n + 1 + km at every size   [[137, 166, 192, 221, 247]]
+    PASS  the assertion grows linearly while enumeration grows with the envelope   [assertion 137 to 247; enumeration 40,724 to 12,048,710]
+
+P.4  ADDRESSES FORMED AND DISCARDED ACROSS SIZE
+
+         n     envelope |  RL formed  RL disc |      enumeration    Davis-Putnam       DPLL (JW) clause learning
+        10        1,024 |         12        0 |            1,012               0               0               1
+        12        4,096 |          8        0 |            4,088               0               0               0
+        14       16,384 |         10        0 |           16,374               0               0               0
+        16       65,536 |          2        0 |           65,534               1               0               0
+        18      262,144 |          6        0 |          262,138               3               2               3
+
+    PASS  production discards nothing at any size
+    PASS  production forms exactly the models at every size
+    PASS  enumeration discards all but the models at every size
+
+P.5  THE PROTOCOL CAN FAIL
+
+    PASS  the methods disagree with one another on their own counters, so none is another under a different name   [[12048710, 61419, 46239, 77819]]
+    PASS  the instances are genuinely satisfiable, so the comparison is not taken on an empty answer   [models [12, 8, 10, 2, 6]]
+    PASS  the sizes actually differ
+
+==========================================================================
+  APPENDIX P   18 of 18 checks pass
+==========================================================================

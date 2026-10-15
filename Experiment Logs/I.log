@@ -1,0 +1,172 @@
+==========================================================================
+  APPENDIX I -- PRODUCTION FROM THE BOUNDARY
+  the boundaries produce the standing addresses; nothing is formed
+  and discarded, and the envelope is never traversed
+==========================================================================
+
+I.1  THE THREE CONDITIONS OF A BOUNDARY
+     classify() against an independent condition, computed by
+     inspecting the support one content at a time.  Exhaustive over
+     every boundary and every partial orientation of its support.
+
+    PASS  Instance 1: condition correct on every partial orientation   2752/2752
+    PASS  Instance 2: condition correct on every partial orientation   3264/3264
+
+I.2  FORCING IS SOUND
+     when a boundary forces an orientation, the opposite orientation
+     places the descent inside that boundary's excluded sector.
+     Verified on every forcing condition that can arise.
+
+    PASS  Instance 1: forcing dictates the only admissible orientation   129/129
+    PASS  Instance 2: forcing dictates the only admissible orientation   153/153
+
+I.3  FORCING IS COMPLETE -- THE EXCLUDED SECTOR IS UNREACHABLE
+     a sector becomes reachable only at its last unoriented content,
+     and forcing orients that content one step earlier.  Tested by
+     requiring that no boundary is ever MATCHED at a descent that
+     applied forcing to exhaustion.
+
+    PASS  Instance 1: no produced address lies in any excluded sector   [15 produced, 0 inside a sector]
+    PASS  Instance 2: no produced address lies in any excluded sector   [10 produced, 0 inside a sector]
+
+I.4  EXACT SET EQUALITY
+     against the committed solution set, and against an independent
+     survey of the whole envelope
+
+    PASS  Instance 1: produced set == committed solution set   [15 produced, 15 committed; missing [], extra []]
+    PASS  Instance 1: produced set == independent survey of the envelope   [survey found 15 over all 1024 addresses]
+    PASS  Instance 2: produced set == committed solution set   [10 produced, 10 committed; missing [], extra []]
+    PASS  Instance 2: produced set == independent survey of the envelope   [survey found 10 over all 4096 addresses]
+
+I.5  SOUNDNESS -- BY DIRECT CLAUSE EVALUATION
+     every produced address is evaluated against the clauses
+     themselves, consulting no boundary
+
+    PASS  Instance 1: every produced address satisfies every clause   15/15
+    PASS  Instance 2: every produced address satisfies every clause   10/10
+
+I.6  COMPLETENESS -- NOTHING STANDING IS OMITTED
+
+    PASS  Instance 1: every satisfying address of the envelope is produced   15/15
+    PASS  Instance 2: every satisfying address of the envelope is produced   10/10
+
+I.7  NO ADDRESS IS PRODUCED TWICE
+
+    PASS  Instance 1: 15 produced, all distinct   [0 repeats]
+    PASS  Instance 2: 10 produced, all distinct   [0 repeats]
+
+I.8  NOTHING IS FORMED AND DISCARDED
+     the measured signature of search
+
+    PASS  Instance 1: discarded = 0   [emitted 15, forced 34 (charged 0), chosen 22, consultations 395]
+    PASS  Instance 1: addresses formed = addresses standing   [a searching method would form 1024]
+    PASS  Instance 2: discarded = 0   [emitted 10, forced 48 (charged 0), chosen 19, consultations 598]
+    PASS  Instance 2: addresses formed = addresses standing   [a searching method would form 4096]
+
+I.9  THE HELD STATE
+     the descent holds the boundaries, one partial orientation per
+     pending branch, and nothing else.  Depth is bounded by n.
+
+    PASS  Instance 1: deepest held state 5 <= n = 10   [stored symbols 140 = n + 1 + km]
+    PASS  Instance 2: deepest held state 7 <= n = 12   [stored symbols 166 = n + 1 + km]
+    PASS  Instance 1: every container held is bounded by the asserted structure   [held ['bnds', 'cforcing', 'clive', 'forcing', 'forcing0', 'index', 'live', 'live0', 'stack']; unbounded: none]
+    PASS  Instance 1: the addresses held number one per pending branch, 3 <= n = 10
+    PASS  Instance 1: the live sets hold boundary indices and the forcing maps hold single content bits, not addresses
+    PASS  Instance 1: no container's size reaches the standing count (15) by accumulation   [a list of produced addresses would appear here as an undeclared container]
+    PASS  Instance 2: every container held is bounded by the asserted structure   [held ['bnds', 'cforcing', 'clive', 'forcing', 'forcing0', 'index', 'live', 'live0', 'stack']; unbounded: none]
+    PASS  Instance 2: the addresses held number one per pending branch, 6 <= n = 12
+    PASS  Instance 2: the live sets hold boundary indices and the forcing maps hold single content bits, not addresses
+    PASS  Instance 2: no container's size reaches the standing count (10) by accumulation   [a list of produced addresses would appear here as an undeclared container]
+
+I.10  OUTPUT SENSITIVITY AT FIXED ENVELOPE
+      n is held at 12, so 2^n is held at 4,096, while the number of
+      standing addresses rises 1 -> 64.  The cost must track what is
+      produced, not the envelope.
+
+      2^0: standing   1   emitted   1   discarded 0   forced   10   chosen    3   consultations    177   acts    183
+      2^1: standing   2   emitted   2   discarded 0   forced    9   chosen    4   consultations    170   acts    178
+      2^2: standing   4   emitted   4   discarded 0   forced    8   chosen    6   consultations    145   acts    157
+      2^3: standing   8   emitted   8   discarded 0   forced    7   chosen   10   consultations    136   acts    156
+      2^4: standing  16   emitted  16   discarded 0   forced    6   chosen   18   consultations    113   acts    149
+      2^5: standing  32   emitted  32   discarded 0   forced    5   chosen   34   consultations    102   acts    170
+      2^6: standing  64   emitted  64   discarded 0   forced    4   chosen   66   consultations     81   acts    213
+
+    PASS  planted-2^0: exactly 2^0 = 1 stand, 1 produced   [discarded 0]
+    PASS  planted-2^1: exactly 2^1 = 2 stand, 2 produced   [discarded 0]
+    PASS  planted-2^2: exactly 2^2 = 4 stand, 4 produced   [discarded 0]
+    PASS  planted-2^3: exactly 2^3 = 8 stand, 8 produced   [discarded 0]
+    PASS  planted-2^4: exactly 2^4 = 16 stand, 16 produced   [discarded 0]
+    PASS  planted-2^5: exactly 2^5 = 32 stand, 32 produced   [discarded 0]
+    PASS  planted-2^6: exactly 2^6 = 64 stand, 64 produced   [discarded 0]
+    PASS  nothing discarded at any solution count
+    PASS  the envelope is fixed at 4,096 while the standing count rises 64x
+    PASS  planted-2^0: consultations 177 <= m x (survey steps + 1) = 903   [m = 43, steps = 17]
+    PASS  planted-2^0: production acts 183 stay below the envelope 4,096   [183 acts for 1 addresses out of 4,096]
+    PASS  planted-2^1: consultations 170 <= m x (survey steps + 1) = 897   [m = 39, steps = 18]
+    PASS  planted-2^1: production acts 178 stay below the envelope 4,096   [178 acts for 2 addresses out of 4,096]
+    PASS  planted-2^2: consultations 145 <= m x (survey steps + 1) = 980   [m = 35, steps = 21]
+    PASS  planted-2^2: production acts 157 stay below the envelope 4,096   [157 acts for 4 addresses out of 4,096]
+    PASS  planted-2^3: consultations 136 <= m x (survey steps + 1) = 1209   [m = 31, steps = 28]
+    PASS  planted-2^3: production acts 156 stay below the envelope 4,096   [156 acts for 8 addresses out of 4,096]
+    PASS  planted-2^4: consultations 113 <= m x (survey steps + 1) = 1674   [m = 27, steps = 43]
+    PASS  planted-2^4: production acts 149 stay below the envelope 4,096   [149 acts for 16 addresses out of 4,096]
+    PASS  planted-2^5: consultations 102 <= m x (survey steps + 1) = 2507   [m = 23, steps = 74]
+    PASS  planted-2^5: production acts 170 stay below the envelope 4,096   [170 acts for 32 addresses out of 4,096]
+    PASS  planted-2^6: consultations 81 <= m x (survey steps + 1) = 3876   [m = 19, steps = 137]
+    PASS  planted-2^6: production acts 213 stay below the envelope 4,096   [213 acts for 64 addresses out of 4,096]
+    PASS  the cost figure tracks the boundaries and the output, not 2^n   [the envelope is identical across all seven rows while the cost is not]
+
+I.11  THE ENVELOPE IS NEVER TRAVERSED
+      a scale series in which 2^n passes any traversable size
+
+        n     m                      2^n  stored  produced  discarded   forced   chosen
+       16    68                   65,536     221         2          0       88       16
+       20    85                1,048,576     276         5          0      170       37
+       24   102               16,777,216     331         6          0      237       38
+       28   119              268,435,456     386        12          0      371       60
+       32   136            4,294,967,296     441       616          0    2,567      803
+       40   170        1,099,511,627,776     551       414          0    2,182      650
+       50   213    1,125,899,906,842,624     690     3,408          0    4,295    3,682
+       64   273 18,446,744,073,709,551,616     884     6,900          0   15,217    7,853
+
+    PASS  n = 16: nothing discarded over an envelope of 65,536   [2 produced from 221 stored symbols]
+    PASS  n = 20: nothing discarded over an envelope of 1,048,576   [5 produced from 276 stored symbols]
+    PASS  n = 24: nothing discarded over an envelope of 16,777,216   [6 produced from 331 stored symbols]
+    PASS  n = 28: nothing discarded over an envelope of 268,435,456   [12 produced from 386 stored symbols]
+    PASS  n = 32: nothing discarded over an envelope of 4,294,967,296   [616 produced from 441 stored symbols]
+    PASS  n = 40: nothing discarded over an envelope of 1,099,511,627,776   [414 produced from 551 stored symbols]
+    PASS  n = 50: nothing discarded over an envelope of 1,125,899,906,842,624   [3,408 produced from 690 stored symbols]
+    PASS  n = 64: nothing discarded over an envelope of 18,446,744,073,709,551,616   [6,900 produced from 884 stored symbols]
+    PASS  the stored object is n + 1 + km at every size
+    PASS  at n = 64 the stored object is 884 symbols and the envelope is 18,446,744,073,709,551,616   [6,900 addresses produced, 0 discarded]
+
+I.12  AN ENVELOPE THE BOUNDARIES CLOSE ENTIRELY
+      nothing stands, so nothing is produced -- and nothing is
+      discarded, because no address is formed in order to be refused
+
+    PASS  closed at n = 3: production yields 0, direct evaluation yields 0   [discarded 0, regions closed 4]
+    PASS  closed at n = 3: the first address is reported absent
+    PASS  closed at n = 6: production yields 0, direct evaluation yields 0   [discarded 0, regions closed 4]
+    PASS  closed at n = 6: the first address is reported absent
+    PASS  closed at n = 10: production yields 0, direct evaluation yields 0   [discarded 0, regions closed 4]
+    PASS  closed at n = 10: the first address is reported absent
+
+I.13  THE i-th ADDRESS, AND THE INDEX PAST THE END
+
+    PASS  Instance 1: the i-th produced address is stable for every i   15/15
+    PASS  Instance 1: an index past the end returns nothing
+    PASS  Instance 1: the first produced address stands
+    PASS  Instance 2: the i-th produced address is stable for every i   10/10
+    PASS  Instance 2: an index past the end returns nothing
+    PASS  Instance 2: the first produced address stands
+
+I.14  VACUITY GUARDS
+      a degenerate workload must fail, not pass over nothing
+
+    PASS  with no boundary asserted, the whole envelope stands   [16 produced, every address of 2^4; consultations 0]
+    PASS  a counted check over an empty workload is a failure, not a pass
+    PASS  report() would fail on a zero workload   [exercised by H's vacuous-pass tests]
+
+==========================================================================
+  APPENDIX I   79 of 79 checks pass
+==========================================================================

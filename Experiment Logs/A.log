@@ -1,0 +1,213 @@
+==========================================================================
+  APPENDIX A -- THE ENVELOPE
+  validates Theorem 4.1, Corollary 4.2, Proposition 4.3,
+            Theorem 5.1, Theorem 5.2, Theorem 5.3, Corollary 5.4
+==========================================================================
+
+A.1  COROLLARY 4.2 -- THE COST OF THE ACT IS n + 1
+     n assertions (Definition 3.1), one mediation (Axiom 4.1),
+     the opposites forced (Axiom 2.2) and charged nothing.
+
+    PASS  n = 1     acts = 2   [assertions 1, mediations 1, forced 1 charged 0]
+    PASS  n = 2     acts = 3   [assertions 2, mediations 1, forced 2 charged 0]
+    PASS  n = 4     acts = 5   [assertions 4, mediations 1, forced 4 charged 0]
+    PASS  n = 8     acts = 9   [assertions 8, mediations 1, forced 8 charged 0]
+    PASS  n = 10    acts = 11   [assertions 10, mediations 1, forced 10 charged 0]
+    PASS  n = 12    acts = 13   [assertions 12, mediations 1, forced 12 charged 0]
+    PASS  n = 16    acts = 17   [assertions 16, mediations 1, forced 16 charged 0]
+    PASS  n = 20    acts = 21   [assertions 20, mediations 1, forced 20 charged 0]
+    PASS  n = 50    acts = 51   [assertions 50, mediations 1, forced 50 charged 0]
+    PASS  n = 100   acts = 101   [assertions 100, mediations 1, forced 100 charged 0]
+    PASS  n = 1000  acts = 1001   [assertions 1000, mediations 1, forced 1000 charged 0]
+
+A.2  PROPOSITION 4.3 -- EVERY PARTITION IS ORIENTED AND BINARY
+     Axiom 2.4: the boundary distinguishes the sides it separates.
+
+    PASS  n = 1   every stratum partitions into exactly two distinct oriented sectors
+    PASS  n = 2   every stratum partitions into exactly two distinct oriented sectors
+    PASS  n = 3   every stratum partitions into exactly two distinct oriented sectors
+    PASS  n = 4   every stratum partitions into exactly two distinct oriented sectors
+    PASS  n = 5   every stratum partitions into exactly two distinct oriented sectors
+    PASS  n = 6   every stratum partitions into exactly two distinct oriented sectors
+    PASS  n = 7   every stratum partitions into exactly two distinct oriented sectors
+    PASS  n = 8   every stratum partitions into exactly two distinct oriented sectors
+    PASS  n = 9   every stratum partitions into exactly two distinct oriented sectors
+    PASS  n = 10  every stratum partitions into exactly two distinct oriented sectors
+    PASS  n = 11  every stratum partitions into exactly two distinct oriented sectors
+    PASS  n = 12  every stratum partitions into exactly two distinct oriented sectors
+    PASS  n = 13  every stratum partitions into exactly two distinct oriented sectors
+    PASS  n = 14  every stratum partitions into exactly two distinct oriented sectors
+
+A.3  THEOREM 5.2 -- TERMINATION AT DEPTH n, CAPACITY EXHAUSTED
+     Theorem 5.10: the termination measure is the remaining
+     unallocated capacity; Definition 5.2: exhaustion IS zero.
+
+    PASS  n = 1   chain length 2 = N + 1, kappa falls 1 -> 0 by one per step
+    PASS  n = 2   chain length 3 = N + 1, kappa falls 2 -> 0 by one per step
+    PASS  n = 3   chain length 4 = N + 1, kappa falls 3 -> 0 by one per step
+    PASS  n = 4   chain length 5 = N + 1, kappa falls 4 -> 0 by one per step
+    PASS  n = 5   chain length 6 = N + 1, kappa falls 5 -> 0 by one per step
+    PASS  n = 6   chain length 7 = N + 1, kappa falls 6 -> 0 by one per step
+    PASS  n = 7   chain length 8 = N + 1, kappa falls 7 -> 0 by one per step
+    PASS  n = 8   chain length 9 = N + 1, kappa falls 8 -> 0 by one per step
+    PASS  n = 9   chain length 10 = N + 1, kappa falls 9 -> 0 by one per step
+    PASS  n = 10  chain length 11 = N + 1, kappa falls 10 -> 0 by one per step
+    PASS  n = 11  chain length 12 = N + 1, kappa falls 11 -> 0 by one per step
+    PASS  n = 12  chain length 13 = N + 1, kappa falls 12 -> 0 by one per step
+    PASS  n = 13  chain length 14 = N + 1, kappa falls 13 -> 0 by one per step
+    PASS  n = 14  chain length 15 = N + 1, kappa falls 14 -> 0 by one per step
+
+A.4  THEOREM 5.3 -- RESIDENCE: 2^n ADDRESSES, EACH UNIQUE
+     exhaustive over the terminal stratum at every n <= 14
+
+    PASS  n = 1   |S_N| =      2 = 2^1
+    PASS  n = 1   all addresses distinct (Theorem 15.3)
+    PASS  n = 1   every address of length N (Theorem 15.1)
+    PASS  n = 1   set conjugate-closed (Theorem 12.1)
+    PASS  n = 2   |S_N| =      4 = 2^2
+    PASS  n = 2   all addresses distinct (Theorem 15.3)
+    PASS  n = 2   every address of length N (Theorem 15.1)
+    PASS  n = 2   set conjugate-closed (Theorem 12.1)
+    PASS  n = 3   |S_N| =      8 = 2^3
+    PASS  n = 3   all addresses distinct (Theorem 15.3)
+    PASS  n = 3   every address of length N (Theorem 15.1)
+    PASS  n = 3   set conjugate-closed (Theorem 12.1)
+    PASS  n = 4   |S_N| =     16 = 2^4
+    PASS  n = 4   all addresses distinct (Theorem 15.3)
+    PASS  n = 4   every address of length N (Theorem 15.1)
+    PASS  n = 4   set conjugate-closed (Theorem 12.1)
+    PASS  n = 5   |S_N| =     32 = 2^5
+    PASS  n = 5   all addresses distinct (Theorem 15.3)
+    PASS  n = 5   every address of length N (Theorem 15.1)
+    PASS  n = 5   set conjugate-closed (Theorem 12.1)
+    PASS  n = 6   |S_N| =     64 = 2^6
+    PASS  n = 6   all addresses distinct (Theorem 15.3)
+    PASS  n = 6   every address of length N (Theorem 15.1)
+    PASS  n = 6   set conjugate-closed (Theorem 12.1)
+    PASS  n = 7   |S_N| =    128 = 2^7
+    PASS  n = 7   all addresses distinct (Theorem 15.3)
+    PASS  n = 7   every address of length N (Theorem 15.1)
+    PASS  n = 7   set conjugate-closed (Theorem 12.1)
+    PASS  n = 8   |S_N| =    256 = 2^8
+    PASS  n = 8   all addresses distinct (Theorem 15.3)
+    PASS  n = 8   every address of length N (Theorem 15.1)
+    PASS  n = 8   set conjugate-closed (Theorem 12.1)
+    PASS  n = 9   |S_N| =    512 = 2^9
+    PASS  n = 9   all addresses distinct (Theorem 15.3)
+    PASS  n = 9   every address of length N (Theorem 15.1)
+    PASS  n = 9   set conjugate-closed (Theorem 12.1)
+    PASS  n = 10  |S_N| =   1024 = 2^10
+    PASS  n = 10  all addresses distinct (Theorem 15.3)
+    PASS  n = 10  every address of length N (Theorem 15.1)
+    PASS  n = 10  set conjugate-closed (Theorem 12.1)
+    PASS  n = 11  |S_N| =   2048 = 2^11
+    PASS  n = 11  all addresses distinct (Theorem 15.3)
+    PASS  n = 11  every address of length N (Theorem 15.1)
+    PASS  n = 11  set conjugate-closed (Theorem 12.1)
+    PASS  n = 12  |S_N| =   4096 = 2^12
+    PASS  n = 12  all addresses distinct (Theorem 15.3)
+    PASS  n = 12  every address of length N (Theorem 15.1)
+    PASS  n = 12  set conjugate-closed (Theorem 12.1)
+    PASS  n = 13  |S_N| =   8192 = 2^13
+    PASS  n = 13  all addresses distinct (Theorem 15.3)
+    PASS  n = 13  every address of length N (Theorem 15.1)
+    PASS  n = 13  set conjugate-closed (Theorem 12.1)
+    PASS  n = 14  |S_N| =  16384 = 2^14
+    PASS  n = 14  all addresses distinct (Theorem 15.3)
+    PASS  n = 14  every address of length N (Theorem 15.1)
+    PASS  n = 14  set conjugate-closed (Theorem 12.1)
+
+A.5  COROLLARY 5.11 -- STRICT CHAIN, SUCCESSOR INJECTIVE AND ACYCLIC
+
+    PASS  n = 2   strict descending containment (Axiom 5.2)
+    PASS  n = 2   nested composition (Proposition 5.8)
+    PASS  n = 2   successor injective, no cycles (Corollary 5.11)
+    PASS  n = 3   strict descending containment (Axiom 5.2)
+    PASS  n = 3   nested composition (Proposition 5.8)
+    PASS  n = 3   successor injective, no cycles (Corollary 5.11)
+    PASS  n = 4   strict descending containment (Axiom 5.2)
+    PASS  n = 4   nested composition (Proposition 5.8)
+    PASS  n = 4   successor injective, no cycles (Corollary 5.11)
+    PASS  n = 5   strict descending containment (Axiom 5.2)
+    PASS  n = 5   nested composition (Proposition 5.8)
+    PASS  n = 5   successor injective, no cycles (Corollary 5.11)
+    PASS  n = 6   strict descending containment (Axiom 5.2)
+    PASS  n = 6   nested composition (Proposition 5.8)
+    PASS  n = 6   successor injective, no cycles (Corollary 5.11)
+    PASS  n = 7   strict descending containment (Axiom 5.2)
+    PASS  n = 7   nested composition (Proposition 5.8)
+    PASS  n = 7   successor injective, no cycles (Corollary 5.11)
+    PASS  n = 8   strict descending containment (Axiom 5.2)
+    PASS  n = 8   nested composition (Proposition 5.8)
+    PASS  n = 8   successor injective, no cycles (Corollary 5.11)
+    PASS  n = 9   strict descending containment (Axiom 5.2)
+    PASS  n = 9   nested composition (Proposition 5.8)
+    PASS  n = 9   successor injective, no cycles (Corollary 5.11)
+    PASS  n = 10  strict descending containment (Axiom 5.2)
+    PASS  n = 10  nested composition (Proposition 5.8)
+    PASS  n = 10  successor injective, no cycles (Corollary 5.11)
+    PASS  n = 11  strict descending containment (Axiom 5.2)
+    PASS  n = 11  nested composition (Proposition 5.8)
+    PASS  n = 11  successor injective, no cycles (Corollary 5.11)
+    PASS  n = 12  strict descending containment (Axiom 5.2)
+    PASS  n = 12  nested composition (Proposition 5.8)
+    PASS  n = 12  successor injective, no cycles (Corollary 5.11)
+    PASS  n = 13  strict descending containment (Axiom 5.2)
+    PASS  n = 13  nested composition (Proposition 5.8)
+    PASS  n = 13  successor injective, no cycles (Corollary 5.11)
+    PASS  n = 14  strict descending containment (Axiom 5.2)
+    PASS  n = 14  nested composition (Proposition 5.8)
+    PASS  n = 14  successor injective, no cycles (Corollary 5.11)
+
+A.6  THE LEDGER -- THEOREM 12.2 AND THEOREM 13.1 AT EVERY DEPTH
+     Theorem 12.2: n + 1 allocated units at depth n, all residual.
+     Theorem 13.1: n conjugate pairs aligned, exactly one unpaired.
+
+    PASS  n = 4   allocated = depth + 1 at every depth
+    PASS  n = 4   pairs = depth at every depth
+    PASS  n = 4   exactly one unpaired at every depth
+    PASS  n = 4   pairs + unpaired = allocated at every depth
+    PASS  n = 10  allocated = depth + 1 at every depth
+    PASS  n = 10  pairs = depth at every depth
+    PASS  n = 10  exactly one unpaired at every depth
+    PASS  n = 10  pairs + unpaired = allocated at every depth
+    PASS  n = 20  allocated = depth + 1 at every depth
+    PASS  n = 20  pairs = depth at every depth
+    PASS  n = 20  exactly one unpaired at every depth
+    PASS  n = 20  pairs + unpaired = allocated at every depth
+    PASS  n = 40  allocated = depth + 1 at every depth
+    PASS  n = 40  pairs = depth at every depth
+    PASS  n = 40  exactly one unpaired at every depth
+    PASS  n = 40  pairs + unpaired = allocated at every depth
+
+A.7  COROLLARY 5.4 -- ADDRESSES FORMED WITHOUT INDIVIDUAL CONSTRUCTION
+     the n + 1 acts form all 2^n; no act forms one address.
+
+    PASS  n = 4       16 addresses formed by 5 acts   [acts per address = 5/16]
+    PASS  n = 8      256 addresses formed by 9 acts   [acts per address = 9/256]
+    PASS  n = 10    1024 addresses formed by 11 acts   [acts per address = 11/1024]
+    PASS  n = 12    4096 addresses formed by 13 acts   [acts per address = 13/4096]
+    PASS  n = 14   16384 addresses formed by 15 acts   [acts per address = 15/16384]
+
+A.8  ADVERSARIAL -- THE COUNT IS NOT ASSUMED ANYWHERE
+     the descent is rebuilt by an independent route (binary counting)
+     and compared to the Proposition 5.5 recursion, set against set.
+
+    PASS  n = 1   recursion output identical to independent construction
+    PASS  n = 2   recursion output identical to independent construction
+    PASS  n = 3   recursion output identical to independent construction
+    PASS  n = 4   recursion output identical to independent construction
+    PASS  n = 5   recursion output identical to independent construction
+    PASS  n = 6   recursion output identical to independent construction
+    PASS  n = 7   recursion output identical to independent construction
+    PASS  n = 8   recursion output identical to independent construction
+    PASS  n = 9   recursion output identical to independent construction
+    PASS  n = 10  recursion output identical to independent construction
+    PASS  n = 11  recursion output identical to independent construction
+    PASS  n = 12  recursion output identical to independent construction
+    PASS  n = 13  recursion output identical to independent construction
+    PASS  n = 14  recursion output identical to independent construction
+
+==========================================================================
+  APPENDIX A   169 of 169 checks pass
+==========================================================================

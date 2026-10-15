@@ -1,0 +1,78 @@
+==========================================================================
+  APPENDIX J -- THE ADVERSARIAL PROTOCOL
+  forcing applied to exhaustion makes an excluded sector
+  unreachable, so no address is formed and discarded
+==========================================================================
+
+J.1  NO ADDRESS IS FORMED AND DISCARDED
+     densities 2.0 to 8.0 including the hard threshold at 4.26;
+     planted and unplanted, so unsatisfiable instances are included
+
+       density  instances  discarded
+           2.0        154          0
+           3.0        154          0
+           4.0        154          0
+          4.26        154          0
+           4.5        154          0
+           5.0        154          0
+           6.0        154          0
+           8.0        154          0
+
+    instances resolved: 1232; of which no address stands: 254
+
+    PASS  no address formed and discarded across 1232 instances   [zero, by the mechanism rather than by stipulation]
+    PASS  unsatisfiable instances are present, so the claim is not tested only where an address exists   [254 of 1232 carry no standing address]
+    PASS  the hard threshold is exercised   [154 instances at density 4.26, 0 discarded]
+
+J.2  PRODUCTION AGREES WITH THE COMPLETE TRUTH TABLE
+     exhaustive over every address of the envelope.  The truth table
+     is the verification device of resolution.py and is charged to
+     no measure; it is what makes the agreement a proof rather than
+     a sample.
+
+    PASS  exact set equality against the truth table   600/600   [every instance]
+
+J.3  THE CLOSURE RULE NEVER CLOSES A REGION HOLDING AN ADDRESS
+     a region is closed when two boundaries force opposite
+     orientations on one content.  Were that unsound, a standing
+     address would be lost, and J.2 would have found it.
+
+    PASS  no standing address was lost on any instance   [600 instances, exhaustive over each envelope]
+
+J.4  THE RESIDUAL COMPONENT FACTORS AS THE PAPER STATES
+     S_ij = 1/2 (s_i - s_j)(s_i + s_j - 2 s_c), exact rational
+     arithmetic, exhaustive over all 2^k orientation states.
+     Widths 3 to 7, so the even case the paper excludes from
+     Theorem 8.4 is exercised rather than avoided.
+
+        k  states   match  termini  predicted
+        3       8       8        2          2
+    PASS  k = 3: the closed form agrees on every orientation state   8/8
+    PASS  k = 3: termini number 2, as predicted (2)   [2 for k odd; 2 + C(k, k/2) for k even]
+        4      16      16        8          8
+    PASS  k = 4: the closed form agrees on every orientation state   16/16
+    PASS  k = 4: termini number 8, as predicted (8)   [2 for k odd; 2 + C(k, k/2) for k even]
+        5      32      32        2          2
+    PASS  k = 5: the closed form agrees on every orientation state   32/32
+    PASS  k = 5: termini number 2, as predicted (2)   [2 for k odd; 2 + C(k, k/2) for k even]
+        6      64      64       22         22
+    PASS  k = 6: the closed form agrees on every orientation state   64/64
+    PASS  k = 6: termini number 22, as predicted (22)   [2 for k odd; 2 + C(k, k/2) for k even]
+        7     128     128        2          2
+    PASS  k = 7: the closed form agrees on every orientation state   128/128
+    PASS  k = 7: termini number 2, as predicted (2)   [2 for k odd; 2 + C(k, k/2) for k even]
+
+    PASS  the factorisation and the terminal count hold at every width tested
+    PASS  odd and even widths are both present, so the parity condition is tested rather than assumed   [k = 3, 5, 7 odd and k = 4, 6 even]
+
+J.5  THE PROTOCOL CAN FAIL
+     a protocol that cannot fail establishes nothing.  Each check
+     below is a condition this protocol would report as a failure.
+
+    PASS  the discard counter records a discard when one occurs   [so a zero in J.1 is a measurement, not an unincremented counter]
+    PASS  a perturbed result set is reported unequal   [the comparison in J.2 is not an identity on its own argument]
+    PASS  a wrong closed form is distinguished from the right one   [so J.4 compares two genuinely different expressions]
+
+==========================================================================
+  APPENDIX J   20 of 20 checks pass
+==========================================================================

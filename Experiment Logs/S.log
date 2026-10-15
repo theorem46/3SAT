@@ -1,0 +1,218 @@
+==============================================================================
+  APPENDIX S -- THE COMPOSED BOUNDARY AND ITS LIGHTHOUSES
+==============================================================================
+
+S.1  THE TWO TERMINI OF A BOUNDARY, AND WHICH ONE IS WRITTEN
+     For k odd the termini are the uniform states at Sigma_u = +k and
+     Sigma_u = -k, a conjugate pair (Axiom 2.3).  The residual
+     terminus is the one at -k: every literal of the boundary
+     falsified.  Its conjugate is forced and is never written.
+
+    PASS  the written terminus falsifies every literal of its boundary   105/105   [Sigma_u = -k, the excluded sector]
+    PASS  its component-wise opposite stands every literal of its boundary   105/105   [Sigma_u = +k, forced by Axiom 2.2, never written]
+    PASS  a terminus bears on exactly the k contents of its own support   105/105   [Axiom 5.1]
+
+S.2  THE THREE RELATIONS ARE EXCLUSIVE AND EXHAUSTIVE
+     A boundary stands at its residual terminus, is barred, or is not
+     yet determined -- exactly one of the three, on the evidence of
+     the contents of its own support.
+
+    PASS  at the residual terminus and barred are never both true   42000/42000   [exclusive]
+    PASS  where neither holds, the support is not yet wholly oriented   42000/42000   [exhaustive]
+    PASS  a boundary barred at a stratum is barred in every stratum below it   30336/30336   [from Axiom 5.2 and Proposition 14.1]
+    PASS  and no address of it stands at that residual terminus   3713/3713
+
+S.3  THE COMPOSED BOUNDARY IS ONE OBJECT
+     The family is a function of the asserted boundaries and the
+     order of mediation, and of nothing else.
+
+    PASS  the identical family returns under permuted presentation of the boundaries   24/24   [four permutations, both orders, every committed instance]
+
+S.4  THE FAMILY READS OUT THE ANSWER, AND NOTHING ELSE
+
+      Instance 1, arriving order: 10 lighthouses, 100 symbols, radii {1: 5, 0: 5}, held 11
+    PASS  Instance 1/arriving: the family reads out the committed set   [15 of 15]
+    PASS  Instance 1/arriving: no address is named twice
+    PASS  Instance 1/arriving: every address read stands
+    PASS  Instance 1/arriving: the radius census identity holds   [sum = 15]
+    PASS  Instance 1/arriving: one stratum per depth, at most n+1   [11 <= 11]
+    PASS  Instance 1/arriving: every lighthouse bars every boundary
+      Instance 1, closing order: 14 lighthouses, 140 symbols, radii {1: 1, 0: 13}, held 11
+    PASS  Instance 1/closing: the family reads out the committed set   [15 of 15]
+    PASS  Instance 1/closing: no address is named twice
+    PASS  Instance 1/closing: every address read stands
+    PASS  Instance 1/closing: the radius census identity holds   [sum = 15]
+    PASS  Instance 1/closing: one stratum per depth, at most n+1   [11 <= 11]
+    PASS  Instance 1/closing: every lighthouse bars every boundary
+      Instance 2, arriving order: 8 lighthouses, 96 symbols, radii {1: 2, 0: 6}, held 13
+    PASS  Instance 2/arriving: the family reads out the committed set   [10 of 10]
+    PASS  Instance 2/arriving: no address is named twice
+    PASS  Instance 2/arriving: every address read stands
+    PASS  Instance 2/arriving: the radius census identity holds   [sum = 10]
+    PASS  Instance 2/arriving: one stratum per depth, at most n+1   [13 <= 13]
+    PASS  Instance 2/arriving: every lighthouse bars every boundary
+      Instance 2, closing order: 7 lighthouses, 84 symbols, radii {1: 3, 0: 4}, held 13
+    PASS  Instance 2/closing: the family reads out the committed set   [10 of 10]
+    PASS  Instance 2/closing: no address is named twice
+    PASS  Instance 2/closing: every address read stands
+    PASS  Instance 2/closing: the radius census identity holds   [sum = 10]
+    PASS  Instance 2/closing: one stratum per depth, at most n+1   [13 <= 13]
+    PASS  Instance 2/closing: every lighthouse bars every boundary
+      Worked Example, arriving order: 3 lighthouses, 18 symbols, radii {0: 3}, held 7
+    PASS  Worked Example/arriving: the family reads out the committed set   [3 of 3]
+    PASS  Worked Example/arriving: no address is named twice
+    PASS  Worked Example/arriving: every address read stands
+    PASS  Worked Example/arriving: the radius census identity holds   [sum = 3]
+    PASS  Worked Example/arriving: one stratum per depth, at most n+1   [7 <= 7]
+    PASS  Worked Example/arriving: every lighthouse bars every boundary
+      Worked Example, closing order: 3 lighthouses, 18 symbols, radii {0: 3}, held 7
+    PASS  Worked Example/closing: the family reads out the committed set   [3 of 3]
+    PASS  Worked Example/closing: no address is named twice
+    PASS  Worked Example/closing: every address read stands
+    PASS  Worked Example/closing: the radius census identity holds   [sum = 3]
+    PASS  Worked Example/closing: one stratum per depth, at most n+1   [7 <= 7]
+    PASS  Worked Example/closing: every lighthouse bars every boundary
+      the family of Instance 1 under the arriving order:
+        FFTTFTFFT*   radius 1
+        TFFTFFFFFT   radius 0
+        TFFTFFTFFT   radius 0
+        TFTTFFFFFT   radius 0
+        TFTTFTFFT*   radius 1
+        TFTTTTFFT*   radius 1
+        TTTFFTFFTF   radius 0
+        TTTFTTFFTF   radius 0
+        TTTTFTFFT*   radius 1
+        TTTTTTFFT*   radius 1
+
+S.5  WHERE THE DESCENT CLOSES, AGAINST HOW TIGHTLY THE INSTANCE IS
+     BOUNDED.  A radius is capacity the asserted relations leave
+     unallocated, so the radii record the depth at which the asserted
+     structure closes.
+
+        m/n    m    admits  lighthouses  max r  held
+        1.0   24   616,864      212,377      8    25
+        1.5   36   188,567       83,063      6    25
+        2.0   48    34,102       16,149      5    25
+        2.5   60     6,868        5,011      4    25
+        3.0   72       779          646      1    25
+        3.5   84       338          289      2    25
+       4.26  102        12           12      0    25
+
+      seven further seeds, greatest radius by density:
+        seed 90234    5   5   4   4   1   3   2
+        seed 4242     7   6   5   6   3   1   1
+        seed 777      7   6   4   4   2   2   0
+        seed 2026     9   6   4   2   1   0   0
+        seed 1618     8   8   4   4   4   2   1
+        seed 3141     5   8   6   2   2   1   1
+        seed 5150     7   8   5   4   2   3   1
+    PASS  on every seed the greatest radius at m/n = 1 exceeds the greatest radius at threshold   [8 seeds]
+    PASS  on every seed the greatest radius at threshold is at most 2   [threshold radii [0, 2, 1, 0, 0, 1, 1, 1]]
+    PASS  on every seed the greatest radius at m/n = 1 is at least 5   [m/n = 1 radii [8, 5, 7, 7, 9, 8, 5, 7]]
+    PASS  a loosely bounded instance closes shallow and carries coarse lighthouses   [greatest radius 8 at m/n = 1]
+    PASS  on the committed row the structure closes at full depth at threshold   [every lighthouse of radius 0 on this seed]
+    PASS  the greatest radius falls as the instance is bounded more tightly   [8 down to 0]
+    PASS  one stratum per depth at every density measured   [held [25, 25, 25, 25, 25, 25, 25]]
+    PASS  every density admits something, so no row is vacuous   [7 densities]
+
+S.6  THE ORDER OF MEDIATION IS PART OF THE ASSERTION
+     Axiom 2.4 makes the Between oriented, so the order is asserted.
+     It changes the family, and neither order dominates.
+
+      Instance 1: arriving  10 lighthouses, closing  14
+    PASS  Instance 1: both orders read out the same answer
+      Instance 2: arriving   8 lighthouses, closing   7
+    PASS  Instance 2: both orders read out the same answer
+      Worked Example: arriving   3 lighthouses, closing   3
+    PASS  Worked Example: both orders read out the same answer
+    PASS  the two orders give different families on at least one instance   [2 of 3 differ]
+    PASS  neither order is the coarser one on every instance   [arriving [10, 8, 3], closing [14, 7, 3]]
+    PASS  each boundary falls in the band of its own decisive depth   108/108   [Axiom 5.1: it says nothing above that depth]
+
+S.7  WHAT THE BOUNDARY HOLDS, AGAINST WHAT THE ANSWER COSTS
+     The assertion is n + 1 + km acts, held as n + 1 + km symbols; the
+     answer is every address admitted, at n symbols each.
+
+         n     m  asserted     admits   answer sym      ratio    lights  held
+        10    42       137         12          120         1x        10    11
+    PASS  n=10: the assertion is n + 1 + km acts   [137 = 10 + 1 + 126]
+    PASS  n=10: the structural opposites are forced and charged nothing   [136 forced, 0 charged]
+    PASS  n=10: one stratum per depth   [11]
+    PASS  n=10: the census identity holds   [12]
+    PASS  n=10: the family agrees with exhaustion over the envelope
+        20    85       276         22          440         2x        18    21
+    PASS  n=20: the assertion is n + 1 + km acts   [276 = 20 + 1 + 255]
+    PASS  n=20: the structural opposites are forced and charged nothing   [275 forced, 0 charged]
+    PASS  n=20: one stratum per depth   [21]
+    PASS  n=20: the census identity holds   [22]
+    PASS  n=20: the family agrees with exhaustion over the envelope
+        30   127       412        106        3,180         8x        94    31
+    PASS  n=30: the assertion is n + 1 + km acts   [412 = 30 + 1 + 381]
+    PASS  n=30: the structural opposites are forced and charged nothing   [411 forced, 0 charged]
+    PASS  n=30: one stratum per depth   [31]
+    PASS  n=30: the census identity holds   [106]
+        50   213       690        739       36,950        54x       556    51
+    PASS  n=50: the assertion is n + 1 + km acts   [690 = 50 + 1 + 639]
+    PASS  n=50: the structural opposites are forced and charged nothing   [689 forced, 0 charged]
+    PASS  n=50: one stratum per depth   [51]
+    PASS  n=50: the census identity holds   [739]
+        70   298       965    597,681   41,837,670    43,355x   364,444    71
+    PASS  n=70: the assertion is n + 1 + km acts   [965 = 70 + 1 + 894]
+    PASS  n=70: the structural opposites are forced and charged nothing   [964 forced, 0 charged]
+    PASS  n=70: one stratum per depth   [71]
+    PASS  n=70: the census identity holds   [597,681]
+
+      the threshold instance at n = 70, m = 298:
+        asserted symbols                            965
+        addresses the boundaries admit          597,681
+        the same answer written out          41,837,670
+        the boundary against it                 43,355x
+        strata held at once                          71   (n + 1 = 71)
+        lighthouses                             364,444
+    PASS  the whole answer resides in fewer than a thousand asserted symbols   [965 symbols for 597,681 addresses]
+    PASS  the boundary holds the answer by four orders of magnitude   [43,355x]
+    PASS  and holds it while standing one stratum per depth
+    PASS  every one of the addresses read at n = 70 stands, checked against the clauses   [597,681 read, 0 do not stand]
+    PASS  no address at n = 70 is named by two lighthouses   [0 duplicates]
+
+S.8  WHERE NOTHING STANDS
+     Tseitin formulas over 3-regular graphs: unsatisfiable, width 3,
+     maximally shared supports, and the family on which resolution is
+     provably exponential.  No stratum bars every boundary, so the
+     composed boundary is empty -- returned, not searched for.
+
+       graph    n    m  lighthouses  held    acts
+           8   12   32            0    12     109
+    PASS  tseitin-8: the assertion is n + 1 + km acts
+          12   18   48            0    18     163
+    PASS  tseitin-12: the assertion is n + 1 + km acts
+          16   24   64            0    24     217
+    PASS  tseitin-16: the assertion is n + 1 + km acts
+          20   30   80            0    30     271
+    PASS  tseitin-20: the assertion is n + 1 + km acts
+    PASS  the composed boundary of each member admits no address   4/4
+    PASS  and each held one stratum per depth while establishing it   4/4
+    PASS  the assertion is linear across the family on which resolution is provably exponential   [109 to 271 acts]
+
+S.9  AGAINST EXHAUSTION, ON INSTANCES NOT COMMITTED
+
+    PASS  the family reads out exactly the standing set, against exhaustion   80/80
+    PASS  one stratum per depth on every instance   80/80
+    PASS  every lighthouse bars every asserted boundary   80/80
+
+S.10  THE PROTOCOL CAN FAIL
+
+    PASS  freeing a content of a lighthouse admits addresses that do not stand, so no radius here is slack   [110 non-standing addresses appear]
+    PASS  dropping a boundary that the assertion needs changes the answer   [15 of 43 boundaries are load-bearing; the remainder are carried by the others]
+    PASS  inverting one boundary's terminus changes the answer   [15 against 8]
+    PASS  the committed solution sets are not empty, so the readings are not vacuous
+    PASS  an instance admitting nothing composes to the empty family   [0 lighthouses]
+    PASS  composition.py imports nothing, so the composition cannot reach an address through another module   [0 imports]
+    PASS  no function of the composition names an address or anything that forms one   [none of ['produce', 'read_region', 'region_str', 'stands', 'truth_set'] appears in any of them]
+    PASS  no function of the composition forms the envelope 2^n   [the envelope appears in no composition function]
+    PASS  the module carries no operation that decomposes a stratum into parts and none that enriches the assertion   [no addition of contents, per the Remark to Theorem 11.1; no mid-descent change to what was asserted at genesis]
+    PASS  the composition reports no traversal tally   [no step of the descent is counted]
+
+==============================================================================
+  APPENDIX S   105 of 105 checks pass
+==============================================================================

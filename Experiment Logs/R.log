@@ -1,0 +1,223 @@
+==============================================================================
+  APPENDIX R -- ONE INSTANCE, WORKED FROM THE ASSERTION TO THE ANSWER
+  Worked Example:  n = 6 contents, m = 11 clauses of width k = 3
+  fingerprint f173fc01677f6f6cdb373d424f740086...
+  chosen small enough to check by hand; the paper's measurements are
+  taken at the satisfiability threshold in Appendices L, P and Q.
+==============================================================================
+
+R.1  THE ASSERTION
+
+     The act of distinction.  Representing the six contents forces
+     the mediated composite S0 = X (x) !X, and !X stands without an
+     act of its own (Axiom 2.2).  One mediation (Axiom 4.1).
+
+       6 assertions, one for each content
+       1 mediation
+       6 structural opposites, forced, charged nothing
+       ----
+       7 acts, and all 2^6 = 64 addresses stand within the descent
+
+     The boundaries.  Each clause is a bounded relation of capacity
+     k = 3 (Theorem 7.2), and its excluded sector is its own three
+     contents at the opposite orientation (Theorem 8.1), written in
+     three symbols and forced rather than asserted.
+
+         #  clause                 excluded sector            symbols
+         0  !x1 v !x2 v x3         x1=T, x2=T, x3=F           3
+         1  !x1 v x3 v !x6         x1=T, x3=F, x6=T           3
+         2  !x1 v !x4 v x6         x1=T, x4=T, x6=F           3
+         3  !x1 v x4 v x6          x1=T, x4=F, x6=F           3
+         4  x1 v !x2 v x5          x1=F, x2=T, x5=F           3
+         5  x1 v x2 v x6           x1=F, x2=F, x6=F           3
+         6  x1 v x3 v x4           x1=F, x3=F, x4=F           3
+         7  !x2 v !x3 v !x5        x2=T, x3=T, x5=T           3
+         8  !x2 v !x4 v !x6        x2=T, x4=T, x6=T           3
+         9  x2 v !x3 v !x6         x2=F, x3=T, x6=T           3
+        10  x2 v !x4 v x5          x2=F, x4=T, x5=F           3
+
+       the assertion: n + 1 + km = 6 + 1 + 3*11 = 40 structural acts
+       opposites forced and charged nothing: 39
+
+    PASS  the assertion is n + 1 + km   [40]
+    PASS  every boundary is written in k symbols, and no more   [11 boundaries, 3 symbols each]
+    PASS  each excluded sector is the clause's own contents at the opposite orientation   [verified component-wise against Axiom 2.3]
+    PASS  no content outside a clause enters its boundary
+
+R.2  THE SOLVED STATE OF A BOUNDARY
+     exact rational arithmetic; no floating point, so no tolerance
+
+     Boundary 0:  !x1 v !x2 v x3
+     Its support is its own three oriented contents, each carrying
+     the orientation the clause asserts:  sigma = (-1, -1, 1)
+
+       Sigma = -1,   sigma_c = -1/3
+
+       A =
+           [      0       0     4/3 ]
+           [      0       0     4/3 ]
+           [    8/3     8/3       0 ]
+       D =
+           [      0       0       2 ]
+           [      0       0       2 ]
+           [      2       2       0 ]
+       S =
+           [      0       0    -2/3 ]
+           [      0       0    -2/3 ]
+           [    2/3     2/3       0 ]
+
+       mu(S) = 4;  hierarchical lysis: 4 -> 2 -> 0
+       terminates at S = 0 in 2 steps, mu(S)/2 = 2
+
+    PASS  A decomposes as D + S, entrywise
+    PASS  D is symmetric and S is antisymmetric
+    PASS  D is the metric on the support: D_ij = (1/2)(sigma_i - sigma_j)^2   [Lemma 7.1 [3]]
+    PASS  lysis strictly decreases the residual by two at each step   [[4, 2, 0]]
+    PASS  lysis terminates at S = 0 in mu(S)/2 steps
+    PASS  lysis leaves the aligned component untouched   [D is a function of the support alone]
+
+       the terminal states of this boundary: (1, 1, 1), (-1, -1, -1)
+       its excluded sector, as asserted:     (1, 1, -1)
+
+    PASS  the termini are exactly the two uniform states, a conjugate pair   [k = 3 is odd, so no balanced state is terminal (Theorem 11.6)]
+    PASS  the excluded sector of a clause with mixed polarity is not a terminus of its own solved state   [the operator reaches the termini; the sector is where the clause fails]
+
+R.3  THE LAPLACIAN THE ALIGNED COMPONENT GENERATES
+
+     The coordinate realization of the support is x = sigma = (-1, -1, 1).
+
+       w =
+           [      0       0       4 ]
+           [      0       0       4 ]
+           [      4       4       0 ]
+       L =
+           [      4       0      -4 ]
+           [      0       4      -4 ]
+           [     -4      -4       8 ]
+
+       characteristic polynomial:  lambda^3 - 16 lambda^2 + 48 lambda - 0
+       eigenvalues:  0, 4, 12
+       the relational graph {w_ij > 0} has edges [(0, 2), (1, 2)] and is connected
+       the coercivity constant is lambda_2 = 4
+
+    PASS  the weights are twice the aligned component, w = 2D   [so L is constructed from D alone, as Theorem 11.5 [2] requires]
+    PASS  the Dirichlet energy is the quadratic form of L, u'Lu = E(u)   125/125   [Lemma 11.1 [2], exact over every u in {-2..2}^3]
+    PASS  L is positive semidefinite   125/125   [Lemma 11.2 [2]]
+    PASS  L annihilates the constant vector, L1 = 0   [Lemma 11.3 [2]]
+    PASS  the discriminant is a perfect square, so the spectrum is exact   [disc = 64]
+    PASS  the eigenvalues satisfy the characteristic polynomial exactly   [['0', '4', '12']]
+    PASS  the spectrum is 0 = lambda_1 < lambda_2 <= lambda_3, so the kernel is one-dimensional   [ker L = span{1}, Lemma 11.3 [2]]
+    PASS  coercivity holds with that constant: u'Lu >= lambda_2 dist(u, span{1})^2   125/125   [Theorem 11.4 [2], exact over every u in {-2..2}^3]
+
+    PASS  every boundary of mixed polarity has a connected relational graph and a strictly positive lambda_2   7/7
+    PASS  every boundary of one polarity has D = 0 and therefore L = 0, so the connectivity hypothesis of Theorem 11.4 [2] does not hold there   4/4   [stated rather than suppressed: a clause whose literals agree in orientation carries no aligned component]
+
+R.4  THE ADDRESS AS A PATH, AND WHAT THE BOUNDARIES DICTATE ALONG IT
+     An address of depth n is an oriented path-word of length n
+     (Definition 26.1), and it resides within the descent
+     independently of any act of selection, retrieval or
+     observation (Theorem 15.1).  There is no act of obtaining it to
+     be priced: the cost of a configuration is the length of its
+     path.  What follows is therefore not a search.  It is each
+     standing address written along its own path, with the boundary
+     that dictates the orientation named at every position it bears
+     on.
+
+     FFFTTT   a path of length 6
+       x1=F   no single boundary bears on it at this prefix
+       x2=F   no single boundary bears on it at this prefix
+       x3=F   no single boundary bears on it at this prefix
+       x4=T   dictated by u6   (x1 v x3 v x4)
+       x5=T   dictated by u10   (x2 v !x4 v x5)
+       x6=T   dictated by u5   (x1 v x2 v x6)
+
+     FTFTTF   a path of length 6
+       x1=F   no single boundary bears on it at this prefix
+       x2=T   no single boundary bears on it at this prefix
+       x3=F   no single boundary bears on it at this prefix
+       x4=T   dictated by u6   (x1 v x3 v x4)
+       x5=T   dictated by u4   (x1 v !x2 v x5)
+       x6=F   dictated by u8   (!x2 v !x4 v !x6)
+
+     TTTFFT   a path of length 6
+       x1=T   no single boundary bears on it at this prefix
+       x2=T   no single boundary bears on it at this prefix
+       x3=T   dictated by u0   (!x1 v !x2 v x3)
+       x4=F   no single boundary bears on it at this prefix
+       x5=F   dictated by u7   (!x2 v !x3 v !x5)
+       x6=T   dictated by u3   (!x1 v x4 v x6)
+
+       positions along the 3 paths            18
+       dictated by a named boundary               9
+       not borne on by any single boundary        9
+
+    PASS  every standing address is an oriented path-word of length n   [3 addresses, depth 6]
+    PASS  wherever a boundary bears on a position it dictates the orientation the address carries there   [9 positions dictated, none in disagreement]
+    PASS  the positions no single boundary bears on are the measure of the assertion, not of a search   [9 of 18 dictated by the m separate boundaries; composing them at depth is what would dictate the rest]
+
+     The last figure is the one to read.  Where a position is
+     dictated, the boundary already holds the orientation and no
+     act determines it.  Where none of the m separate boundaries
+     bears on a position, the assertion has not yet fixed it --
+     the m clause boundaries have not been composed into one
+     boundary at depth.  That is a property of the assertion made,
+     and a better assertion makes a better boundary.
+
+R.5  WHAT IS ASSERTED AND WHAT IS HELD
+
+       the assertion, n + 1 + km                    40 acts
+       what is held                                 40 symbols
+       the envelope it bounds                       64 addresses
+       addresses the boundaries admit                3
+       the same answer written out                  18 symbols
+
+       addresses formed and then discarded           0
+
+    PASS  what is asserted and held is n + 1 + km symbols, and carries no term in how many addresses stand   [40 symbols admitting 3 addresses]
+    PASS  no address is formed and then discarded   [a boundary's excluded sector becomes reachable only when the last content of its support is oriented, and the boundary dictates that content one step earlier]
+    PASS  what is held contains no term in how many addresses stand   [40 symbols on this instance, where 3 addresses stand; the same 40 would hold were it a thousand, and Appendix Q.7 takes an instance where the answer is large]
+
+R.6  THE ANSWER
+
+     The boundaries admit 3 addresses of the 64 in the envelope:
+
+       FFFTTT   x1=F   x2=F   x3=F   x4=T   x5=T   x6=T
+       FTFTTF   x1=F   x2=T   x3=F   x4=T   x5=T   x6=F
+       TTTFFT   x1=T   x2=T   x3=T   x4=F   x5=F   x6=T
+
+     The planted assignment is FFFTTT, and it is among them.
+
+     Each is checked clause by clause, every clause satisfied by a named literal:
+
+       FFFTTT   !x1  !x1  !x1  !x1  !x2   x6   x4  !x2  !x2  !x3   x5
+       FTFTTF   !x1  !x1  !x1  !x1   x5   x2   x4  !x3  !x6   x2   x2
+       TTTFFT    x3   x3  !x4   x6   x1   x1   x1  !x5  !x4   x2   x2
+
+    PASS  the addresses produced are exactly the committed solution set   [3 addresses, exact set equality]
+    PASS  and exactly those a traversal of the whole envelope finds   [independent survey of all 64 addresses]
+    PASS  every address produced satisfies every clause of the formula   3/3   [evaluated against the clauses, not the boundaries]
+    PASS  no address outside the produced set satisfies the formula   [61 addresses outside, none satisfying]
+    PASS  the planted assignment is produced
+
+     The four questions of Theorem 9.1, put to the boundaries:
+       how many addresses stand?           3
+       does FFFTTT stand?                 yes, in 33 comparisons
+       does FFFFFF stand?                 no
+       which boundaries exclude it?        u5, u6
+         u5: x1 v x2 v x6   excluded sector x1=F, x2=F, x6=F
+         u6: x1 v x3 v x4   excluded sector x1=F, x3=F, x4=F
+
+    PASS  membership is decided in km comparisons against the boundaries   [km = 33]
+    PASS  the boundaries that exclude an address are named individually   [2 named, each verified against its clause]
+
+R.7  THE PROTOCOL CAN FAIL
+
+    PASS  a boundary taken from the literal rather than its structural opposite gives a different answer   [6 addresses differ between the two answers]
+    PASS  removing one boundary admits addresses the instance excludes
+    PASS  the committed solution set is not empty, so the verification is not vacuous
+    PASS  the instance carries a fingerprint over its whole content
+    PASS  the solved state of a uniform support has no residual to lyse, so R.2 is not measuring an artefact of one orientation
+
+==============================================================================
+  APPENDIX R   40 of 40 checks pass
+==============================================================================
