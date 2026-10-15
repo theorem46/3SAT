@@ -13,9 +13,8 @@ The manuscript is **not** hosted in this repository. It is published open access
 
 | | |
 | --- | --- |
-| **Zenodo** | https://doi.org/10.5281/zenodo.XXXXXXXX |
-| **ResearchGate** | https://www.researchgate.net/publication/XXXXXXXXX_Relational_Lysis_and_Computational_Efficiency_II_The_Resolution_of_3-SAT_by_Boundary_Assertion |
-| **ResearchHub** | https://www.researchhub.com/paper/XXXXXXX |
+| **Zenodo** | https://doi.org/10.5281/zenodo.23401824 |
+| **ResearchGate** | https://www.researchgate.net/publication/415911315_Relational_Lysis_and_Computational_Efficiency_II_The_Resolution_of_3-SAT_by_Boundary_Assertion |
 
 This repository contains only the experiments behind the paper's appendices and their recorded output, so that any claim in the paper can be re-run and checked independently.
 
